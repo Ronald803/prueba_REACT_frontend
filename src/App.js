@@ -4,12 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css';
 import Navigation from './components/Navigation';
-import Home from './components/Home';
-import CreateUser from './components/CreateUser';
-import Salone from './components/Salone';
-import Comida from './components/Comida';
-import Bartender from './components/Bartender';
-import Musica from './components/Musica';
+import { Bartender,Comida,CreateUser,Home,Musica,NotFoundPage, Salone} from './pages/index';
+
 
 function App() {
   return (
@@ -22,6 +18,7 @@ function App() {
             <Route path="/servicios/comida" element={<Comida/>} />
             <Route path="/servicios/musica" element={<Musica/>} />
             <Route path="/servicios/bartender" element={<Bartender/>} />
+            <Route path= "*" element={<NotFoundPage/>}/>
           </Routes>
    
     </BrowserRouter>

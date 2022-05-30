@@ -5,7 +5,7 @@ export default class Navigation extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div className="container-fluid p-2">
+        <div className="container-fluid p-3">
           <Link className='navbar-brand ' to="/">
               Eventos Gran Poder
           </Link>
@@ -28,7 +28,7 @@ export default class Navigation extends Component {
                 <Link className="nav-link" to="/servicios/musica">Música</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/servicios/musica">Bartender</Link>
+                <Link className="nav-link" to="/servicios/bartender">Bartender</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/usuarios">Iniciar Sesión</Link>
