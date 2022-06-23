@@ -1,66 +1,81 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Cookies from 'universal-cookie';
+
+const baseUrl="http://localhost:8080/auth/login";
+const cookies = new Cookies();
+
 
 export class CreateUser extends Component {
-
-  state = {
-    users: [],
-    date: ''
+  state={
+      form:{
+          username: '',
+          password: '',
+      }
   }
 
-  async componentDidMount(){
-//      const res = await axios.get(`http://localhost:8080/servicios/salones?fecha=${this.state.date}`);
-//      this.setState({ users: res.data});
-      console.log(this.state.users)
-    }
+  handleChange= async e=>{
+    await this.setState({
+      form: {
+        ...this.state.form,
+        [e.target.name]: e.target.value
+      }
+    });
+    console.log(this.state.form);
+  }
 
-  onChangeDate=(e)=>{
-    console.log(e.target.value)
-    this.setState({
-      date: e.target.value
+  iniciarSesion= async()=>{
+    await axios.post(baseUrl, {correo: this.state.form.username, contraseña: this.state.form.password})
+    .then(response=>{
+      console.log(response.data);  
+      return response.data;
+
+    })
+    .then(response=>{
+        var respuesta=response.usuario;
+        var token=response.token
+        cookies.set('id', respuesta.uid, {path: "/"});
+        cookies.set('nombreusuario', respuesta.nombreusuario, {path: "/"});
+        cookies.set('token',token)
+        alert(`Bienvenido ${respuesta.nombreusuario}`);
+        window.location.href="./";
+      
+    }) 
+  
+    .catch(error=>{
+      console.log(error);
+      alert('El correo o la contraseña no son correctos');
     })
   }
 
-  onSubmit = async e => {
-      e.preventDefault();
-      const res =await axios.get(`http://localhost:8080/servicios/salones?fecha=${this.state.date}`);
-      this.setState({users : res.data});
-      console.log(res)
-    }
   render() {
     return (
-      <div className='row'>
-        <div className='col-md-4'> 
-            <div className='card card-body'>
-                <h3>Ingresa la fecha</h3>  
-                <form onSubmit={this.onSubmit}>
-                    <div className='form-group'>
-                        <input 
-                            type="text" 
-                            className='form-control' 
-                            onChange={this.onChangeDate}
-                        />
-                    </div>
-                    <button type="submit" className='btn btn-primary'>
-                        Consultar
-                    </button>
-                </form>
-            </div>
+      <div className='containerPrincipal'>
+        <div className='containerSecundario'>
+          <div className='form-group'>
+            <label>Usuario:</label>
+            <br/>
+              <input 
+                type="text"
+                className='form-control'
+                name="username"
+                onChange={this.handleChange}
+              />
+            <br/>
+            <label>Contraseña: </label>
+            <br/>
+                <input
+                type="password"
+                className='form-control'
+                name='password'
+                onChange={this.handleChange}
+              />
+            <br/>
+            <button className='btn btn-primary' onClick={()=> this.iniciarSesion()} >Iniciar Sesión</button>
+          </div>
         </div>
-
-        <div className='col-md-8'>
-            <ul className='list-group'>
-                {
-                  this.state.users.map(user => 
-                      (<li className='list-group-item list-group-action' key={user._id}>
-                        evento: {user.evento} _ salon: {user.salon} _ usuario: {user.nombreusuario} _ característica: {user.caracteristica}
-                      </li>)
-                  )
-                }
-            </ul>
-        </div>
-
       </div>
-    )
+    );
   }
 }
