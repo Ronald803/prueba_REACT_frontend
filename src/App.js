@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css';
 import Navigation from './components/Navigation';
-import { Bartender, Comida, CreateUser, Home, Musica, NotFoundPage, Salone } from './pages/index';
+import { Bartender, Comida, Home, Login, Create_User, Musica, NotFoundPage, Salone } from './pages/index';
 
 
 function App() {
@@ -14,7 +14,8 @@ function App() {
       <div className='container p-4'>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/usuarios" element={<CreateUser />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/Create_User" element={<Create_User />} />
           <Route path="/servicios/salones" element={<Salone />} />
           <Route path="/servicios/comida" element={<Comida />} />
           <Route path="/servicios/musica" element={<Musica />} />

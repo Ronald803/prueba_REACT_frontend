@@ -7,7 +7,7 @@ const baseUrl="http://localhost:8080/auth/login";
 const cookies = new Cookies();
 
 
-export class CreateUser extends Component {
+export class Login extends Component {
   state={
       form:{
           username: '',
@@ -24,13 +24,14 @@ export class CreateUser extends Component {
     });
     console.log(this.state.form);
   }
-
+  CrearUsuario=()=>{
+    window.location.href='/Create_User'
+  }
   iniciarSesion= async()=>{
     await axios.post(baseUrl, {correo: this.state.form.username, contraseña: this.state.form.password})
     .then(response=>{
       console.log(response.data);  
       return response.data;
-
     })
     .then(response=>{
         var respuesta=response.usuario;
@@ -49,6 +50,11 @@ export class CreateUser extends Component {
     })
   }
 
+  componentDidMount(){
+    if(cookies.get('nombreusuario')){
+        window.location.href="./"
+    }
+  }
   render() {
     return (
       <div className='containerPrincipal'>
@@ -73,6 +79,7 @@ export class CreateUser extends Component {
               />
             <br/>
             <button className='btn btn-primary' onClick={()=> this.iniciarSesion()} >Iniciar Sesión</button>
+            <button className='btn btn-primary' onClick={()=> this.CrearUsuario()} >Crear Usuario</button>
           </div>
         </div>
       </div>
