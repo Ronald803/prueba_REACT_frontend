@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import Cookies from 'universal-cookie';
 
+const cookies = new Cookies();
 
 export default class Date_finder extends Component {
             
@@ -27,6 +29,7 @@ export default class Date_finder extends Component {
                   e.preventDefault();
                   const res =await axios.get(`http://localhost:8080/servicios/${this.props.children}?fecha=${this.state.date}`);
                   this.setState({users : res.data});
+                  cookies.set('fecha', this.state.date, {path: "/"});
                   console.log(res)
                 }
               render() {
