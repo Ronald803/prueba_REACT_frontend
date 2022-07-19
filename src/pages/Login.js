@@ -35,10 +35,12 @@ export class Login extends Component {
     })
     .then(response=>{
         var respuesta=response.usuario;
-        var token=response.token
+        var token=response.token;
+        var rol=response.rol;
         cookies.set('id', respuesta.uid, {path: "/"});
         cookies.set('nombreusuario', respuesta.nombreusuario, {path: "/"});
-        cookies.set('token',token)
+        cookies.set('token',token, {path:"/"});
+        cookies.set('rol',respuesta.rol, {path:"/"});
         alert(`Bienvenido ${respuesta.nombreusuario}`);
         window.location.href="./";
       
@@ -46,7 +48,7 @@ export class Login extends Component {
   
     .catch(error=>{
       console.log(error);
-      alert('El correo o la contraseña no son correctos');
+      alert(`Lo sentimos. ${error.response.data.msg}`);
     })
   }
 

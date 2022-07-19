@@ -41,18 +41,19 @@ export class Create_User extends Component {
     })
     .then(response=>{
         var respuesta=response.usuario;
-        var token=response.token
+        var token=response.token;
+        var rol=response.rol;
        cookies.set('id', respuesta.uid, {path: "/"});
        cookies.set('nombreusuario', respuesta.nombreusuario, {path: "/"});
-       cookies.set('token',token)
+       cookies.set('token',token);
+       cookies.set('rol',respuesta.rol);
         alert(`Bienvenido ${respuesta.nombreusuario}, tu datos fueron registrados correctamente`);
         window.location.href="./";
-      
     }) 
   
     .catch(error=>{
       console.log(error);
-      alert('El correo o la contraseña no son correctos');
+      alert(`Lo sentimos. ${error.response.data.msg}`);
     })
   }
 

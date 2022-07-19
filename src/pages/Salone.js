@@ -38,6 +38,7 @@ export class Salone extends Component {
                             , { headers: { "x-token": cookies.get('token') } })
       .then(response => {
         console.log(response.data);
+        console.log(response.data.msg);
         return response.data;
       })
       /*   .then(response=>{
@@ -52,8 +53,7 @@ export class Salone extends Component {
          }) 
        */
       .catch(error => {
-        console.log(error);
-        alert('El correo o la contraseña no son correctos');
+        alert(`Lo sentimos. ${error.response.data.msg}`);
       })
   }
 

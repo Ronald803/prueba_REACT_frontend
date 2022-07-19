@@ -11,6 +11,7 @@ export default class Navigation extends Component {
     cookies.remove("nombreusuario",{path: "/"});
     cookies.remove("id", {path: "/"});
     cookies.remove("token", {path: "/"});
+    cookies.remove("rol",{path: "/"});
     window.location.href='/Login'
   }
 

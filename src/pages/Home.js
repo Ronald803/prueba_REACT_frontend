@@ -8,7 +8,7 @@ const cookies = new Cookies();
 export class Home extends Component {
   render() {
     console.log(cookies.get('nombreusuario'));
-    
+    console.log(cookies.get('rol'));
     console.log(cookies.get('token'));
     return (
       <div>
