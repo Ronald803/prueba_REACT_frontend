@@ -53,7 +53,8 @@ export default class Navigation extends Component {
               </li>
             </ul>
           </div>
-          <button onClick={()=>this.cerrarSesion()}>Cerrando Sesión ( {cookies.get('nombreusuario')} )</button>
+          { cookies.get('nombreusuario') &&
+            <button onClick={()=>this.cerrarSesion()}>Cerrando Sesión ( {cookies.get('nombreusuario')} )</button>}
         </div>
       </nav>
     )

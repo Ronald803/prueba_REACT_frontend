@@ -34,6 +34,20 @@ export default class Date_finder extends Component {
     cookies.set('fecha', this.state.date, { path: "/" });
   }
 
+  deleteNote = async(id) => {
+    console.log(id)
+    await axios.delete(`http://localhost:8080/servicios/${this.props.children}/`+id,{ headers: { "x-token": cookies.get('token') } })
+    .then(response => {
+      console.log(response.data);
+      console.log(response.data.msg);
+      return response.data;
+    })
+    .catch(error => {
+      alert(`Lo sentimos. ${error.response.data.msg}`);
+    });
+    alert(`Reserva eliminada`);
+    window.location.href=`./${this.props.children}/`
+  }
 
   render() {
     console.log('jajaja');
@@ -74,12 +88,22 @@ export default class Date_finder extends Component {
                    
                   <p>Salón: {user.salon}</p>
                   <p>Fecha: {user.fecha}</p>
-                  <p>Salón: {user.servicio}</p>
+                  <p>Servicio: {user.servicio}</p>
                   { cookies.get('rol')=="ADMINISTRADOR" &&
                     <div>
                         <p>Precio: {user.precio}</p>
                         <p>nombreusuario: {user.nombreusuario}</p>
                         <p>ID: {user._id}</p>
+
+                        { user.caracteristica=='eliminado' ? 
+                            <p>ELIMINADO</p>:
+                            <div className='card-footer'>
+                            <button className='btn btn-danger' onClick={(() => this.deleteNote(user._id))}>
+                                Eliminar Reserva
+                            </button>
+                        </div>
+                        }
+
                     </div> 
                   }
                 </div>
