@@ -64,7 +64,7 @@ export class Salone extends Component {
 
   render() {
     return (
-      <div>Salone
+      <div>
         <Date_finder>salones</Date_finder>
         <div className='containerPrincipal'>
           <div className='containerSecundario'>

@@ -8,7 +8,8 @@ export default class Date_finder extends Component {
 
   state = {
     users: [],
-    date: ''
+    date: '',
+    disponible: true
   }
 
   async componentDidMount() {
@@ -52,7 +53,6 @@ export default class Date_finder extends Component {
   render() {
     console.log('jajaja');
     console.log(this.state.users)
-    const condicion = "USUARIO";
     return (
       <div className='row'>
         <div className='col-md-4'>
@@ -78,37 +78,74 @@ export default class Date_finder extends Component {
 
           {
             this.state.users.map(user =>
-            (<div className='col-md-4 p-2' key={user._id}>
-              <div className='card'>
-                <div className='card-header'>
-                  <h5>Evento: {user.evento}</h5>
-                </div>
+            ( 
+              <div className='col-md-4 p-2' key={user._id}>  
+              { cookies.get('rol')=="ADMINISTRADOR" ? 
+                                
+                                <div className='card'>
+                                  <div className='card-header'>
+                                    <h5>Evento: {user.evento}</h5>
+                                  </div>
+              
+                                  <div className='card-body'>
+                                    
+                                    <p>Salón: {user.salon}</p>
+                                    <p>Fecha: {user.fecha}</p>
+                                    <p>Servicio: {user.servicio}</p>
+                                    { cookies.get('rol')=="ADMINISTRADOR" &&
+                                      <div>
+                                          <p>Precio: {user.precio}</p>
+                                          <p>nombreusuario: {user.nombreusuario}</p>
+                                          <p>ID: {user._id}</p>
+              
+                                          { user.caracteristica=='eliminado' ? 
+                                              <p>ELIMINADO</p>:
+                                              <div className='card-footer'>
+                                              <button className='btn btn-danger' onClick={(() => this.deleteNote(user._id))}>
+                                                  Eliminar Reserva
+                                              </button>
+                                          </div>
+                                          }
+              
+                                      </div> 
+                                    }
+                                  </div>
+                                </div> :
+                              
+                              <div>
+                              
+                              { user.caracteristica=='eliminado' ? 
+                                              <p>ELIMINADO</p>:
+                                              <div className='col-md-4 p-2' key={user._id}>
+                                              <div className='card'>
+                                                <div className='card-header'>
+                                                  <h5>Evento: {user.evento}</h5>
+                                                </div>
+                            
+                                                <div className='card-body'>
+                                                  
+                                                  <p>Salón: {user.salon}</p>
+                                                  <p>Fecha: {user.fecha}</p>
+                                                  <p>Servicio: {user.servicio}</p>
+                                                  
+                                                </div>
+                                              </div>
+                              </div>
+                                          }
 
-                <div className='card-body'>
-                   
-                  <p>Salón: {user.salon}</p>
-                  <p>Fecha: {user.fecha}</p>
-                  <p>Servicio: {user.servicio}</p>
-                  { cookies.get('rol')=="ADMINISTRADOR" &&
-                    <div>
-                        <p>Precio: {user.precio}</p>
-                        <p>nombreusuario: {user.nombreusuario}</p>
-                        <p>ID: {user._id}</p>
 
-                        { user.caracteristica=='eliminado' ? 
-                            <p>ELIMINADO</p>:
-                            <div className='card-footer'>
-                            <button className='btn btn-danger' onClick={(() => this.deleteNote(user._id))}>
-                                Eliminar Reserva
-                            </button>
-                        </div>
-                        }
+                              
 
-                    </div> 
-                  }
-                </div>
-              </div>
-            </div>))
+                              </div>
+                            }
+
+            
+                
+                
+            
+              </div>  
+              )
+            )
           }
 
         </div>
