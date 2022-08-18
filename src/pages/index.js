@@ -6,6 +6,7 @@ export {Musica} from "./Musica";
 export { NotFoundPage } from "./NotFoundPage";
 export {Salone} from "./Salone";
 export {Create_User} from "./Create_User";
+export {Edit} from "./Edit";
 
 
 

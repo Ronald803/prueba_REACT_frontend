@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Cookies from 'universal-cookie';
-
+import {Link} from "react-router-dom";
 const cookies = new Cookies();
-
 export default class Date_finder extends Component {
 
   state = {
@@ -11,17 +10,13 @@ export default class Date_finder extends Component {
     date: '',
     disponible: true
   }
-
   async componentDidMount() {
-    //      const res = await axios.get(`http://localhost:8080/servicios/salones?fecha=${this.state.date}`);
-    //      this.setState({ users: res.data});
     console.log(this.state.users)
     console.log("componentdidmount")
   }
 
   onChangeDate = (e) => {
     console.log(e.target.value)
-
     this.setState({
       date: e.target.value
     })
@@ -51,7 +46,6 @@ export default class Date_finder extends Component {
   }
 
   render() {
-    console.log('jajaja');
     console.log(this.state.users)
     return (
       <div className='row'>
@@ -61,7 +55,7 @@ export default class Date_finder extends Component {
             <form onSubmit={this.onSubmit}>
               <div className='form-group'>
                 <input
-                  type="text"
+                  type="date"
                   className='form-control'
                   onChange={this.onChangeDate}
                 />
@@ -73,9 +67,7 @@ export default class Date_finder extends Component {
           </div>
         </div>
 
-
         <div className='row'>
-
           {
             this.state.users.map(user =>
             ( 
@@ -86,9 +78,7 @@ export default class Date_finder extends Component {
                                   <div className='card-header'>
                                     <h5>Evento: {user.evento}</h5>
                                   </div>
-              
                                   <div className='card-body'>
-                                    
                                     <p>Salón: {user.salon}</p>
                                     <p>Fecha: {user.fecha}</p>
                                     <p>Servicio: {user.servicio}</p>
@@ -97,23 +87,24 @@ export default class Date_finder extends Component {
                                           <p>Precio: {user.precio}</p>
                                           <p>nombreusuario: {user.nombreusuario}</p>
                                           <p>ID: {user._id}</p>
-              
                                           { user.caracteristica=='eliminado' ? 
                                               <p>ELIMINADO</p>:
-                                              <div className='card-footer'>
+                                              <div className='card-footer d-flex justify-content-between'>
                                               <button className='btn btn-danger' onClick={(() => this.deleteNote(user._id))}>
                                                   Eliminar Reserva
                                               </button>
-                                          </div>
+                                              
+                                              <Link className='btn btn-secondary' to={"/edit/" + user._id}>
+                                              Editar
+                                              </Link>
+                                              
+                                              </div>
                                           }
-              
                                       </div> 
                                     }
                                   </div>
                                 </div> :
-                              
                               <div>
-                              
                               { user.caracteristica=='eliminado' ? 
                                               <p>ELIMINADO</p>:
                                               <div className='col-md-4 p-2' key={user._id}>
@@ -121,36 +112,21 @@ export default class Date_finder extends Component {
                                                 <div className='card-header'>
                                                   <h5>Evento: {user.evento}</h5>
                                                 </div>
-                            
                                                 <div className='card-body'>
-                                                  
                                                   <p>Salón: {user.salon}</p>
                                                   <p>Fecha: {user.fecha}</p>
                                                   <p>Servicio: {user.servicio}</p>
-                                                  
                                                 </div>
                                               </div>
                               </div>
                                           }
-
-
-                              
-
                               </div>
                             }
-
-            
-                
-                
-            
               </div>  
               )
             )
           }
-
         </div>
-
-     
       </div>
     )
   }

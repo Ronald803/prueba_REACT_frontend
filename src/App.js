@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css';
 import Navigation from './components/Navigation';
-import { Bartender, Comida, Home, Login, Create_User, Musica, NotFoundPage, Salone } from './pages/index';
+import { Bartender, Comida, Home, Login, Create_User, Musica, NotFoundPage, Salone, Edit } from './pages/index';
 
 
 function App() {
@@ -21,6 +21,7 @@ function App() {
           <Route path="/servicios/musica" element={<Musica />} />
           <Route path="/servicios/bartender" element={<Bartender />} />
           <Route path="*" element={<NotFoundPage />} />
+          <Route path="/edit/:id" element={<Edit />}/>
         </Routes>
       </div>
 

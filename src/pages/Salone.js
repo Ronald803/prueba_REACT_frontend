@@ -4,10 +4,8 @@ import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Cookies from 'universal-cookie';
 
-
 const baseUrl = "http://localhost:8080/servicios/salones";
 const cookies = new Cookies();
-
 
 export class Salone extends Component {
   state = {
@@ -49,18 +47,13 @@ export class Salone extends Component {
             cookies.set('token',token)
              alert(`Bienvenido ${respuesta.nombreusuario}, tu datos fueron registrados correctamente`);
              window.location.href="./";
-           
          }) 
        */
       .catch(error => {
         alert(`Lo sentimos. ${error.response.data.msg}`);
       })
+      window.location.href=`./`
   }
-
-
-
-
-
 
   render() {
     return (
@@ -70,16 +63,14 @@ export class Salone extends Component {
           <div className='containerSecundario'>
             <div className='form-group'>
 
-              <label>Salón:</label>
+              <label>Salón:   !</label>
+              <select name="salon" id="cursos" onChange={this.handleChange}>
+                <option value="">Elige una opción</option>
+                <option value="golden">Golden</option>
+                <option value="platinum">Platinum</option>
+                <option value="otro">Otro</option>
+              </select>
               <br />
-              <input
-                type="text"
-                className='form-control'
-                name="salon"
-                onChange={this.handleChange}
-              />
-              <br />
-
               <label>Evento:</label>
               <br />
               <input
@@ -89,8 +80,6 @@ export class Salone extends Component {
                 onChange={this.handleChange}
               />
               <br />
-
-
               <button className='btn btn-primary' onClick={() => this.registrarse()} >Reservar</button>
             </div>
           </div>
