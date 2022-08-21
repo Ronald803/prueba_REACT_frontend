@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import Date_finder from '../components/Date_finder'
-
+import { Request } from '../components/Request'
 export class Musica extends Component {
   render() {
     return (
-      <div>Musica
+      <div>
       <Date_finder>musica</Date_finder>
       </div>
     )

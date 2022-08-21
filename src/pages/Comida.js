@@ -4,7 +4,7 @@ import Date_finder from '../components/Date_finder'
 export  class Comida extends Component {
   render() {
     return (
-      <div>Comida
+      <div>
       <Date_finder>comida</Date_finder>  
       </div>
     )

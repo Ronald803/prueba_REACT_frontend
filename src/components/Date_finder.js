@@ -42,7 +42,7 @@ export default class Date_finder extends Component {
       alert(`Lo sentimos. ${error.response.data.msg}`);
     });
     alert(`Reserva eliminada`);
-    window.location.href=`./${this.props.children}/`
+    window.location.href=window.location.href;
   }
 
   render() {
@@ -73,7 +73,6 @@ export default class Date_finder extends Component {
             ( 
               <div className='col-md-4 p-2' key={user._id}>  
               { cookies.get('rol')=="ADMINISTRADOR" ? 
-                                
                                 <div className='card'>
                                   <div className='card-header'>
                                     <h5>Evento: {user.evento}</h5>
@@ -82,6 +81,23 @@ export default class Date_finder extends Component {
                                     <p>Salón: {user.salon}</p>
                                     <p>Fecha: {user.fecha}</p>
                                     <p>Servicio: {user.servicio}</p>
+                                    {this.props.children=="bartender" &&
+                                      <div>
+                                        <p>Bartenders: {user.bartenderpro}</p>
+                                        <p>Garzones: {user.garzones}</p>
+                                      </div>
+                                      }
+                                    {this.props.children=="musica" &&
+                                      <div>
+                                        <p>Artista: {user.grupo}</p>
+                                      </div>
+                                    }
+                                    {this.props.children=="comida" &&
+                                      <div>
+                                        <p>Plato: {user.plato}</p>
+                                        <p>Invitados: {user.invitados}</p>
+                                      </div>
+                                    }
                                     { cookies.get('rol')=="ADMINISTRADOR" &&
                                       <div>
                                           <p>Precio: {user.precio}</p>

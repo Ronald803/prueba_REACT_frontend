@@ -46,7 +46,7 @@ export class Edit extends Component {
         if(res.data.msg){
             alert(res.data.msg)
         }else{
-            alert("Su actualización fue realizada con éxito")
+            alert("Su actualización fue realizada con éxito");
         }
         console.log(res.data.msg);
         console.log(res)
