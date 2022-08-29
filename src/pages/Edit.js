@@ -6,29 +6,32 @@ const cookies = new Cookies();
 export class Edit extends Component {
     
     state={
-        users:[],
-        userSelected: '',
         salon: '',
         fecha: '',
+        plato: '',
+        invitados: '',
+        grupo: '',
+        bartenderpro:'',
+        garzones:''
     }
     async componentDidMount(){
-        //const res = await axios.get('http://localhost:8080/servicios/salones?fecha=2022-08-15')
-        //const res = await axios.put(`http://localhost:8080/servicios/salones/`+window.location.pathname.substring(6),{ headers: { "x-token": cookies.get('token') } });
-        //const res = await axios.put(`http://localhost:8080/servicios/salones/`+window.location.pathname.substring(6),cookies.get('token'));
-        //this.setState({users: res.data.map(user=> user._id)})
         const res = await axios({
             method: 'put',
-            url: `http://localhost:8080/servicios/salones/${window.location.pathname.substring(6)}`,
+            url: `http://localhost:8080/servicios/${cookies.get('servicio')}/${window.location.pathname.substring(6)}`,
             headers: {'x-token': cookies.get('token')}
         })
         this.setState({
             evento: res.data.evento,
             salon: res.data.salon,
-            fecha: res.data.fecha
+            fecha: res.data.fecha,
+            plato: res.data.plato,
+            invitados: res.data.invitados,
+            grupo: res.data.grupo,
+            bartenderpro: res.data.bartenderpro,
+            garzones: res.data.garzones
         })
-        console.log(this.state.users)
         console.log("Este es id:"+ window.location.pathname.substring(6));
-        console.log(`http://localhost:8080/servicios/salones/`+window.location.pathname.substring(6));
+        console.log(`http://localhost:8080/servicios/${cookies.get('servicio')}/`+window.location.pathname.substring(6));
         console.log("x-token:"+ cookies.get('token'))
         console.log(res.data);
     }
@@ -36,11 +39,16 @@ export class Edit extends Component {
         e.preventDefault()
         const res = await axios({
             method: 'put',
-            url: `http://localhost:8080/servicios/salones/${window.location.pathname.substring(6)}`,
+            url: `http://localhost:8080/servicios/${cookies.get('servicio')}/${window.location.pathname.substring(6)}`,
             headers: {'x-token': cookies.get('token')},
             data: {
                 salon: this.state.salon,
-                fecha: this.state.fecha
+                fecha: this.state.fecha,
+                invitados: this.state.invitados,
+                plato: this.state.plato,
+                grupo: this.state.grupo,
+                bartenderpro: this.state.bartenderpro,
+                garzones: this.state.garzones
             }
         })
         if(res.data.msg){
@@ -66,12 +74,20 @@ export class Edit extends Component {
             fecha: e.target.value
         })
     }
+    handleChange = async e => {
+        await this.setState({
+           
+            ...this.state,
+            [e.target.name]: e.target.value
+          
+        });
+        console.log(this.state);
+      }
   render() {
     return (
         <div className='col-md-6 offset-md-3'>
             <div className='card card-body'>
                 <h4>{this.state.evento}</h4>
-                {/* SELECT USER*/}
                 <div className='form-group'>
                     Salon: 
                     <select className='form-control' value={this.state.salon} name='salon' onChange={this.onInputChange}>
@@ -80,6 +96,28 @@ export class Edit extends Component {
                         <option value="otro">Otro</option>
                     </select>
                 </div>
+                {cookies.get('servicio')=="comida" &&
+                    <div>
+                    <label>Plato:</label> <br />
+                    <input type="text" className='form-control' name="plato" value={this.state.plato} onChange={this.handleChange}/> <br />
+                    <label>Invitados:</label> <br />
+                    <input type="number" className='form-control' name="invitados" value={this.state.invitados} onChange={this.handleChange}/> <br />
+                    </div> 
+                }
+                {cookies.get('servicio')=="musica" &&
+                    <div>
+                    <label>Artista:</label> <br />
+                    <input type="text" className='form-control' name="grupo" value={this.state.grupo} onChange={this.handleChange}/> <br />
+                    </div> 
+                }
+                {cookies.get('servicio')=="bartender" &&
+                    <div>
+                    <label>Bartenders:</label> <br />
+                    <input type="number" className='form-control' name="bartenderpro" value={this.state.bartenderpro} onChange={this.handleChange}/> <br />
+                    <label>Garzones:</label> <br />
+                    <input type="number" className='form-control' name="garzones" value={this.state.garzones} onChange={this.handleChange}/> <br />
+                    </div> 
+                }
                 <div className='form-group'>
                     <input
                         type="date"

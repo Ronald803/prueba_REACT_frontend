@@ -12,6 +12,9 @@ export class Request extends Component {
       event: '',
       bartenderpro: ' ',
       garzones: ' ',
+      plato: '',
+      invitados: '',
+      grupo: '',
     }
   }
   handleChange = async e => {
@@ -34,7 +37,10 @@ export class Request extends Component {
                                 fecha: cookies.get('fecha'),
                                 nombreusuario: cookies.get('nombreusuario'),
                                 bartenderpro: this.state.form.bartenderpro,
-                                garzones: this.state.form.garzones
+                                garzones: this.state.form.garzones,
+                                plato: this.state.form.plato,
+                                invitados: this.state.form.invitados,
+                                grupo: this.state.form.grupo
                               }
                             , { headers: { "x-token": cookies.get('token') } })
       .then(response => {
@@ -80,6 +86,20 @@ export class Request extends Component {
                         <input type="number" className='form-control' name="bartenderpro" onChange={this.handleChange}/> <br />
                         <label>Garzones:</label> <br />
                         <input type="number" className='form-control' name="garzones" onChange={this.handleChange}/> <br />
+                    </div> 
+              }
+              { this.props.children=="comida" &&
+                    <div>
+                        <label>Plato:</label> <br />
+                        <input type="text" className='form-control' name="plato" onChange={this.handleChange}/> <br />
+                        <label>Invitados:</label> <br />
+                        <input type="number" className='form-control' name="invitados" onChange={this.handleChange}/> <br />
+                    </div> 
+              }
+              { this.props.children=="musica" &&
+                    <div>
+                        <label>Artista:</label> <br />
+                        <input type="text" className='form-control' name="grupo" onChange={this.handleChange}/> <br />
                     </div> 
               }
               <button className='btn btn-primary' onClick={() => this.registrarse()} >Reservar</button>

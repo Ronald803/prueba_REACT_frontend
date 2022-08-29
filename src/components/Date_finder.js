@@ -28,6 +28,7 @@ export default class Date_finder extends Component {
     this.setState({ users: res.data });
     console.log(res.data)
     cookies.set('fecha', this.state.date, { path: "/" });
+    cookies.set('servicio', this.props.children, { path: "/"});
   }
 
   deleteNote = async(id) => {
