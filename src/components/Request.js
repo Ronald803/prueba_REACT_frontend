@@ -10,12 +10,7 @@ export class Request extends Component {
     form: {
       salon: '',
       event: '',
-      bartenderpro: ' ',
-      garzones: ' ',
-      plato: '',
-      invitados: '',
-      grupo: '',
-    }
+      }
   }
   handleChange = async e => {
     await this.setState({
@@ -24,23 +19,26 @@ export class Request extends Component {
         [e.target.name]: e.target.value
       }
     });
+    if(e.target.name=="salon"){
+      cookies.set('salon', this.state.form.salon, {path: "/"});
+      }
     console.log(this.state.form);
   }
   registrarse = async () => {
     const baseUrl = `http://localhost:8080/servicios/${this.props.children}`; 
     await axios.post(baseUrl, {
-                                salon: this.state.form.salon,
+                                salon: cookies.get('salon'),
                                 servicio: this.props.children,
                                 caracteristica: "reservado",
                                 evento: this.state.form.event,
-                                precio: "1000",
+                                precio: cookies.get('precio'),
                                 fecha: cookies.get('fecha'),
                                 nombreusuario: cookies.get('nombreusuario'),
-                                bartenderpro: this.state.form.bartenderpro,
-                                garzones: this.state.form.garzones,
-                                plato: this.state.form.plato,
-                                invitados: this.state.form.invitados,
-                                grupo: this.state.form.grupo
+                                bartenderpro: cookies.get('bartenderpro'),
+                                garzones: cookies.get('garzones'),
+                                plato: cookies.get('plato'),
+                                invitados: cookies.get('invitados'),
+                                grupo: cookies.get('grupo')
                               }
                             , { headers: { "x-token": cookies.get('token') } })
       .then(response => {
@@ -62,46 +60,22 @@ export class Request extends Component {
         <div className='containerPrincipal'>
           <div className='containerSecundario'>
             <div className='form-group'>
-
-              <label>Salón:   !</label>
-              <select name="salon" id="cursos" onChange={this.handleChange}>
-                <option value="">Elige una opción</option>
-                <option value="golden">Golden</option>
-                <option value="platinum">Platinum</option>
-                <option value="otro">Otro</option>
-              </select>
-              <br />
+            { this.props.children!="salones" &&
+              <div>            
+                    <label>Salón:   !</label>
+                    <select name="salon" id="cursos"   onChange={this.handleChange}>
+                      <option value="">Elige una opción</option>
+                      <option value="golden">Golden</option>
+                      <option value="platinum">Platinum</option>
+                      <option value="otro">Otro</option>
+                    </select>
+                    <br />
+              </div>
+            }
               <label>Evento:</label>
               <br />
-              <input
-                type="text"
-                className='form-control'
-                name="event"
-                onChange={this.handleChange}
-              />
+              <input type="text" className='form-control' name="event" onChange={this.handleChange}/>
               <br />
-              { this.props.children=="bartender" &&
-                    <div>
-                        <label>Bartenders:</label> <br />
-                        <input type="number" className='form-control' name="bartenderpro" onChange={this.handleChange}/> <br />
-                        <label>Garzones:</label> <br />
-                        <input type="number" className='form-control' name="garzones" onChange={this.handleChange}/> <br />
-                    </div> 
-              }
-              { this.props.children=="comida" &&
-                    <div>
-                        <label>Plato:</label> <br />
-                        <input type="text" className='form-control' name="plato" onChange={this.handleChange}/> <br />
-                        <label>Invitados:</label> <br />
-                        <input type="number" className='form-control' name="invitados" onChange={this.handleChange}/> <br />
-                    </div> 
-              }
-              { this.props.children=="musica" &&
-                    <div>
-                        <label>Artista:</label> <br />
-                        <input type="text" className='form-control' name="grupo" onChange={this.handleChange}/> <br />
-                    </div> 
-              }
               <button className='btn btn-primary' onClick={() => this.registrarse()} >Reservar</button>
             </div>
           </div>

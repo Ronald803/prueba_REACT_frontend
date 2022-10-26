@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import Cookies from 'universal-cookie';
-
 const cookies = new Cookies();
 
 export default class Navigation extends Component {
-
-
   cerrarSesion=()=>{
     cookies.remove("nombreusuario",{path: "/"});
     cookies.remove("id", {path: "/"});
@@ -14,7 +11,6 @@ export default class Navigation extends Component {
     cookies.remove("rol",{path: "/"});
     window.location.href='/Login'
   }
-
   render() {
     console.log(`Esta es una prueba ${cookies.get('nombreusuario')}`);
     return (
@@ -45,6 +41,11 @@ export default class Navigation extends Component {
               <li className="nav-item">
                 <Link className="nav-link" to="/servicios/bartender">Bartender</Link>
               </li>
+              { cookies.get('rol')=="ADMINISTRADOR" &&
+                <li className="nav-item">
+                  <Link className="nav-link" to="/usuarios">Usuarios</Link>
+                </li>
+              }
               <li className="nav-item">
                 <Link className="nav-link" to="/login">Iniciar Sesión</Link>
               </li>
@@ -54,7 +55,7 @@ export default class Navigation extends Component {
             </ul>
           </div>
           { cookies.get('nombreusuario') &&
-            <button onClick={()=>this.cerrarSesion()}>Cerrando Sesión ( {cookies.get('nombreusuario')} )</button>}
+            <button onClick={()=>this.cerrarSesion()}>Cerrar Sesión ( {cookies.get('nombreusuario')} )</button>}
         </div>
       </nav>
     )
