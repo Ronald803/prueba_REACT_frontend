@@ -22,40 +22,57 @@ cantidadBartenders= e => {
 }
   render() {
     return (
-      <div>
-        <div id="carouselExampleControls" className="carousel slide w-50" data-bs-ride="carousel">
-          <div className="carousel-inner w-100">
-            <div className="carousel-item active " data-bs-pause="true"  >
-                <img src="../img/barman1.jpg" className="d-block w-100 " alt="slide1" />
+      <body class="servicio">
+        <section class="tarjetas-contenedor">
+            <div class="tarjeta-contenedor flotar">
+                    <div class="tarjeta-img">
+                        <img src="../img/barman1.jpg" alt="Fotografia de Barman trabajando"/>
+                    </div>
+                    <div class="tarjeta-descripcion">
+                        <h2 class="tarjeta-titulo">Barman</h2>
+                        <div class="tarjeta-descripcion-precio">
+                            <h2>Bs. <span class="precio-numero">200</span></h2>
+                            <ul class="tarjeta-caracteristicas">
+                                <li>Salón de eventos de lujo</li>
+                                <li>Capacidad para 200 personas</li>
+                                <li>Escenario para música en vivo</li>
+                            </ul>
+                        </div>
+                    </div>
             </div>
-
-            <div className="carousel-item " data-bs-pause="true" >
-                <img src="../img/barman2.jpg" className="d-block w-100  " alt="slide2"/>
-            </div>
-
-            <div className="carousel-item " data-bs-pause="true" >
-                <img src="../img/barman3.jpg" className="d-block w-100  " alt="slide2"/>
-            </div>
-          </div>
-          <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-            <span className="carousel-control-prev-icon" aria-hidden="true"></span> 
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Next</span>
-          </button>
-        </div>
-      <Date_finder>bartender</Date_finder>  
-      <Request>bartender</Request>
-      <div>
-              <label>Bartenders:</label> <br />
-              <input type="number" className='form-control' name="bartenderpro" onChange={this.cantidadBartenders}/> <br />
-              <label>Garzones:</label> <br />
-              <input type="number" className='form-control' name="garzones" onChange={this.cantidadBartenders}/> <br />
-              <h1>Precio: {cookies.get('precio')} Bs.</h1>
+            <div class="tarjeta-contenedor flotar">
+                    <div class="tarjeta-img">
+                        <img src="../img/barman2.jpg" alt="Fotografia de bartenders"/>
+                    </div>
+                    <div class="tarjeta-descripcion">
+                        <h2 class="tarjeta-titulo">Bartenders</h2>
+                        <div class="tarjeta-descripcion-precio">
+                            <h2>Bs. <span class="precio-numero">50</span></h2>
+                            <ul class="tarjeta-caracteristicas">
+                                <li>Salón de eventos de lujo</li>
+                                <li>Capacidad para 200 personas</li>
+                                <li>Escenario para música en vivo</li>
+                            </ul>
+                        </div>
+                    </div>
+            </div>      
+        </section>
+        <div>
+          <Date_finder>bartender</Date_finder>
+          <div class="contenedor-derecho contenedor-solicitud-reserva">
+              <label>
+                <span>Bartender(s):</span>
+                <input type="number" className='form-control' name="bartenderpro" onChange={this.cantidadBartenders}/>
+              </label>  
+              <label>
+                <span>Garzones(s):</span>
+                <input type="number" className='form-control' name="garzones" onChange={this.cantidadBartenders}/>
+              </label>  
+              <p>Precio: Bs. {cookies.get('precio')}</p>
           </div> 
-      </div>
+          <Request>bartender</Request>
+        </div>
+      </body>
     )
   }
 }

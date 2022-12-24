@@ -49,36 +49,28 @@ export default class Date_finder extends Component {
   render() {
     console.log(this.state.users)
     return (
-      <div className='row'>
-        <div className='col-md-4'>
-          <div className='card card-body'>
-            <h3>Ingresa la fecha</h3>
-            <form onSubmit={this.onSubmit}>
-              <div className='form-group'>
-                <input
-                  type="date"
-                  className='form-control'
-                  onChange={this.onChangeDate}
-                />
-              </div>
-              <button type="submit" className='btn btn-primary'>
-                Consultar
-              </button>
+      <div>
+        <div class="contenedor-derecho contenedor-fecha-disponibilidad">
+            <form class="form-selector-fecha" onSubmit={this.onSubmit}>
+                <label>
+                    <span>¿Cuándo requieres nuestros servicios?</span><br/>
+                    <span>Consulta la disponibilidad </span>
+                    <input
+                    type="date"
+                    onChange={this.onChangeDate}/>
+                    <button type="submit">Consultar</button>
+                </label>
             </form>
-          </div>
         </div>
-
-        <div className='row'>
-          {
-            this.state.users.map(user =>
-            ( 
-              <div className='col-md-4 p-2' key={user._id}>  
+        <div>
+          {this.state.users.map(user =>(
+            <div key={user._id}>  
               { cookies.get('rol')=="ADMINISTRADOR" ? 
-                                <div className='card'>
-                                  <div className='card-header'>
-                                    <h5>Evento: {user.evento}</h5>
+                                <div class="resultado-tarjeta">
+                                  <div>
+                                    <h5>{user.evento}</h5>
                                   </div>
-                                  <div className='card-body'>
+                                  <div>
                                     <p>Salón: {user.salon}</p>
                                     <p>Fecha: {user.fecha}</p>
                                     <p>Servicio: {user.servicio}</p>
@@ -103,39 +95,32 @@ export default class Date_finder extends Component {
                                       <div>
                                           <p>Precio: {user.precio}</p>
                                           <p>nombreusuario: {user.nombreusuario}</p>
-                                          <p>ID: {user._id}</p>
                                           { user.caracteristica=='eliminado' ? 
                                               <p>ELIMINADO</p>:
-                                              <div className='card-footer d-flex justify-content-between'>
-                                              <button className='btn btn-danger' onClick={(() => this.deleteNote(user._id))}>
-                                                  Eliminar Reserva
-                                              </button>
-                                              
-                                              <Link className='btn btn-secondary' to={"/edit/" + user._id}>
-                                              Editar
-                                              </Link>
-                                              
+                                              <div class="resultado-botones">
+                                              <Link class="link" to={"/edit/" + user._id}>Actualizar Reserva</Link>
+                                              <a class="boton-eliminar flotar" onClick={(() => this.deleteNote(user._id))}>Eliminar Reserva</a>
                                               </div>
+                                              
                                           }
                                       </div> 
                                     }
                                   </div>
                                 </div> :
-                              <div>
-                              { user.caracteristica=='eliminado' ? 
-                                              <p>ELIMINADO</p>:
-                                              <div className='col-md-4 p-2' key={user._id}>
-                                              <div className='card'>
-                                                <div className='card-header'>
-                                                  <h5>Evento: {user.evento}</h5>
-                                                </div>
-                                                <div className='card-body'>
-                                                  <p>Salón: {user.salon}</p>
-                                                  <p>Fecha: {user.fecha}</p>
-                                                  <p>Servicio: {user.servicio}</p>
-                                                </div>
-                                              </div>
-                              </div>
+                              <div>{user.caracteristica=='eliminado' ? 
+                                <hr/>:
+                                <div class="resultado-tarjeta" key={user._id}>
+                                  <div >
+                                    <div >
+                                      <h5>Evento: {user.evento}</h5>
+                                    </div>
+                                    <div >
+                                      <p>Salón: {user.salon}</p>
+                                      <p>Fecha: {user.fecha}</p>
+                                      <p>Servicio: {user.servicio}</p>
+                                    </div>
+                                  </div>
+                                </div>
                                           }
                               </div>
                             }

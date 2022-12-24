@@ -10,61 +10,67 @@ export class Salone extends Component {
   state = {
     form: {
       salon: 'golden',
-      precio: '7000 Bs',
-      descripcion: 'Salón de eventos de lujo. Capacidad para 200 personas. Cuenta con escenario para música en vivo, cocina equipada, bar con barra.',
+      precio: '7000 Bs'
     }
   }
 
 precioSalon = async (e,f) => {
   cookies.set('precio', e , { path: "/" });
   cookies.set('salon',f, { path: "/" })
-  const gold = "Salón de eventos de lujo. Capacidad para 200 personas. Cuenta con escenario para música en vivo, cocina equipada, bar con barra.";
-  const plati = "Salón de eventos de lujo. Capacidad para 150 personas. Cuenta con escenario para música en vivo, bar con barra.";
-  let aux = gold;
-  if (f =="platinum"){
-    aux=plati;
-  }
   await this.setState({
     form: {
       salon: f,
       precio: e,
-      descripcion: aux,
     }
   })
   console.log("de state"+this.state.form.salon)
 }
   render() {
     return (
-      <div>
-      <div id="carouselExampleControls" className="carousel slide w-50" data-bs-ride="carousel">
-          <div className="carousel-inner w-100">
-            <div className="carousel-item active " data-bs-pause="true"  onClick={ (()=> this.precioSalon(7000,"golden")) }>
-                <img src="../img/salongolden.jpg" className="d-block w-100 " alt="slide1" />
+      <body class="servicio">
+        <section class="tarjetas-contenedor">
+            <div class="tarjeta-contenedor flotar" onClick={ (()=> this.precioSalon(7000,"golden")) }>
+                    <div class="tarjeta-img">
+                        <img src="../img/salongolden.jpg" alt="Fotografia panoramica del Salón"/>
+                    </div>
+                    <div class="tarjeta-descripcion">
+                        <h2 class="tarjeta-titulo">Salón Golden</h2>
+                        <div class="tarjeta-descripcion-precio">
+                            <h2>Bs. <span class="precio-numero">7000</span></h2>
+                            <ul class="tarjeta-caracteristicas">
+                                <li>Salón de eventos de lujo</li>
+                                <li>Capacidad para 200 personas</li>
+                                <li>Escenario para música en vivo</li>
+                            </ul>
+                        </div>
+                    </div>
             </div>
-
-            <div className="carousel-item " data-bs-pause="true" onClick={ (()=> this.precioSalon(5000,"platinum")) }>
-                <img src="../img/salonplatinum.jpg" className="d-block w-100  " alt="slide2"/>
-            </div>
-          </div>
-          <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-            <span className="carousel-control-prev-icon" aria-hidden="true"></span> 
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Next</span>
-          </button>
+            <div class="tarjeta-contenedor flotar" onClick={ (()=> this.precioSalon(5000,"platinum")) }>
+                    <div class="tarjeta-img">
+                        <img src="../img/salonplatinum.jpg" alt="Fotografia panoramica del Salón"/>
+                    </div>
+                    <div class="tarjeta-descripcion">
+                        <h2 class="tarjeta-titulo">Salón Platinum</h2>
+                        <div class="tarjeta-descripcion-precio">
+                            <h2>Bs. <span class="precio-numero">5000</span></h2>
+                            <ul class="tarjeta-caracteristicas">
+                                <li>Salón de eventos de lujo</li>
+                                <li>Capacidad para 200 personas</li>
+                                <li>Escenario para música en vivo</li>
+                            </ul>
+                        </div>
+                    </div>
+            </div>      
+        </section>
+        <div>
+          <Date_finder>salones</Date_finder>
+          <div class="contenedor-derecho contenedor-solicitud-reserva">
+              <p>{"Salon: " + this.state.form.salon}</p>  
+              <p>{"Precio Bs. "+ this.state.form.precio}</p>
+          </div> 
+          <Request>salones</Request>
         </div>
-      
-      <Date_finder>salones</Date_finder> 
-      <div className='containerPrincipal'>
-        <h1>{"Salón "+this.state.form.salon}</h1>
-        <h1>{"Precio "+this.state.form.precio+ " Bs."}</h1>
-        <h2>{this.state.form.descripcion}</h2>
-        <Request>salones</Request>
-      </div>
-
-      </div>
+      </body>
     )
   }
 }

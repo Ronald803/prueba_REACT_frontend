@@ -55,14 +55,14 @@ export class Request extends Component {
 
   render() {
     return (
-      <div>
-        
-        <div className='containerPrincipal'>
-          <div className='containerSecundario'>
-            <div className='form-group'>
+      <div class="contenedor-derecho contenedor-solicitud-reserva">
+        <form class="form-selector-fecha" onSubmit={this.onSubmit}>
+          <label>
+            <span>Nombre de tu evento: </span>
+            <input type="text" name="event" onChange={this.handleChange}/>
             { this.props.children!="salones" &&
               <div>            
-                    <label>Salón:   !</label>
+                    <label>Salón:</label>
                     <select name="salon" id="cursos"   onChange={this.handleChange}>
                       <option value="">Elige una opción</option>
                       <option value="golden">Golden</option>
@@ -72,14 +72,9 @@ export class Request extends Component {
                     <br />
               </div>
             }
-              <label>Evento:</label>
-              <br />
-              <input type="text" className='form-control' name="event" onChange={this.handleChange}/>
-              <br />
-              <button className='btn btn-primary' onClick={() => this.registrarse()} >Reservar</button>
-            </div>
-          </div>
-        </div>
+            <button onClick={() => this.registrarse()} >Reservar</button>
+          </label>
+        </form>
       </div>
     )
   }

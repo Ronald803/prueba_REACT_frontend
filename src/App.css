@@ -1,51 +1,204 @@
-.App {
+#principal-body{
+  display: grid;
+  grid-template-columns: 15% 85%;
+  max-width: 1500px;
+  margin: 0px auto;
+}
+.barra-superior{
+  background-color: black;
+  align-self: center;
+}
+header {
+  height: 100px;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.header-navegacion{
+  display: flex;
+  list-style: none;
+  color: white;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+header em {
+  font-size: 2rem;
+  color: white;
+}
+.header-navegacion li{
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+  font-size: 1.4rem;
+  color: white;
+}
+a{text-decoration: none; color: white}
+.barra-nav-lateral{
+  margin-top: 25px;
+}
+.barra-nav-lateral div{
+  background-color: #464445;
+  min-width: 118px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  margin-bottom: 5px;
+  font-size: 1.3rem;
+  border-radius: 20px;
+}
+.servicio{
+  display: grid;
+  grid-template-columns: 75% 25%;
+}
+.tarjetas-contenedor{
+  justify-content: center;
+  justify-items: center;
+  margin-left: 10px;
+}
+.tarjeta-contenedor{
+  margin-bottom: 10px;
+  background-color: #dbc3cd;
+  border-radius: 20px;
+  display: grid;    
+  grid-template-columns: 2fr 1fr;
+  box-shadow:
+       inset 0 -3em 3em rgba(0,0,0,0.1),
+             0 0  0 2px rgb(255,255,255),
+             0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
+.flotar:hover{box-shadow: 4px 4px 20px #0009;}
+.tarjeta-contenedor img{
+  width: 100%;
+  border-radius: 22px;
+}
+.tarjeta-img{
+  text-align: center;
+}
+.tarjeta-titulo{
+  text-align: center;
+  font-size: 2rem;
+  height: 60px;
+}
+.tarjeta-descripcion{
+  margin: auto;
+  padding-left: 5px;
+}
+.tarjeta-descripcion-precio{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(268px, 350px));
+  color: black;
+}
+.tarjeta-descripcion-precio h2{
+  width: 60%;
+  text-align: center;
+  background-color: rgb(0, 0, 0);
+  margin: 0 auto 15px auto;
+  border: 3px solid black;
+  border-radius: 30px;
+  color: white;
+}
+.precio-numero{
+  margin: 5px;
+  font-size: 1.8rem;
+}
+.tarjeta-descripcion li{
+  font-size: 1.2rem;
+  color: black;
+}
+li{
+  font-size: 1.3rem;
+  color: black;
+}
+.contenedor-derecho{
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 95%;
+  text-align: center;
+  border-radius:10px;    
+  font-size: 1.3rem;
+  color: white;
+}
+.contenedor-derecho p{
+  margin: 0;
+}
+.contenedor-fecha-disponibilidad{
+  background-color: #464445;
+  margin-bottom: 10px;
+}
+.contenedor-solicitud-reserva{
+  background-color: #7edab6;
+}
+.resultado-tarjeta{
+  margin: auto;
+  margin-top: 5px;
+  width: 95%;
+  padding-left: 5px;
+  padding-top: 10px;
+  border: 2px solid black ;
+  border-radius: 10px;
+  line-height: 5px;
+  font-size: 1.2rem;
+}
+.resultado-botones{
+  line-height: normal;
+  text-align: center;
+}
+.boton-eliminar{
+  display: block;
+  background-color: rgb(248, 98, 98);
+  border-radius: 15px;
+  margin-bottom: 5px;
+}
+.link{
+  display: block;
+  background-color: #464445;
+  border-radius: 15px;
+  margin-bottom: 5px;
+}
+hr{margin: 0;}
+footer{
+  background-color: black;
+  color: white;
+  font-size: 1.1rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-.carousel-inner {
-  max-height: 39rem;
-}
 
 .containerPrincipal {
   position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
     border: 1px solid blue;
     padding: 40px;
     background-color: white;
+    margin-left: 2%;
 }
 
 .containerSecundario{
   text-align: center;
 }
 
+.informacion{
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+  color: grey;
+}
+.caru-info{
+  display: flex;
+ }
+.carousel-inner{
+  border: 2px solid black;
+  border-radius: 3%;
+  width: 50vw;
+}
+.d-block{
+  width: 100%;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

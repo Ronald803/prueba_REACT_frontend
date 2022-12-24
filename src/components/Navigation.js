@@ -12,52 +12,22 @@ export default class Navigation extends Component {
     window.location.href='/Login'
   }
   render() {
-    console.log(`Esta es una prueba ${cookies.get('nombreusuario')}`);
     return (
-      
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div className="container-fluid p-3">
-          <Link className='navbar-brand ' to="/">
-              Eventos Gran Poder
-          </Link>
-
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ms-auto">
-              <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">Inicio</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/servicios/salones">Salones</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/servicios/comida">Comida</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/servicios/musica">Música</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/servicios/bartender">Bartender</Link>
-              </li>
+      <div class="barra-superior">
+      <header>
+          <em>Eventos Gran Poder</em>
+          <ul class="header-navegacion">
+              <a href="/"><li>Inicio</li></a>
+              <a href="/login"><li>Iniciar Sesión</li></a>
+              <a href="/Create_user"><li>Registrarse</li></a>
               { cookies.get('rol')=="ADMINISTRADOR" &&
-                <li className="nav-item">
-                  <Link className="nav-link" to="/usuarios">Usuarios</Link>
-                </li>
+                <a href="/usuarios"><li>Usuarios</li></a>
               }
-              <li className="nav-item">
-                <Link className="nav-link" to="/login">Iniciar Sesión</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/Create_User">Registrarse</Link>
-              </li>
-            </ul>
-          </div>
-          { cookies.get('nombreusuario') &&
-            <button onClick={()=>this.cerrarSesion()}>Cerrar Sesión ( {cookies.get('nombreusuario')} )</button>}
-        </div>
-      </nav>
+              { cookies.get('nombreusuario') &&
+              <button onClick={()=>this.cerrarSesion()}>Cerrar Sesión ( {cookies.get('nombreusuario')} )</button>}
+          </ul>
+        </header> 
+      </div>
     )
   }
 }

@@ -12,7 +12,10 @@ export class Edit extends Component {
         invitados: '',
         grupo: '',
         bartenderpro:'',
-        garzones:''
+        garzones:'',
+        correo:'',
+        celular:'',
+        rol:'',
     }
     async componentDidMount(){
         const res = await axios({
@@ -28,7 +31,10 @@ export class Edit extends Component {
             invitados: res.data.invitados,
             grupo: res.data.grupo,
             bartenderpro: res.data.bartenderpro,
-            garzones: res.data.garzones
+            garzones: res.data.garzones,
+            correo: res.data.correo,
+            celular: res.data.celular,
+            rol: res.data.rol
         })
         console.log("Este es id:"+ window.location.pathname.substring(6));
         console.log(`http://localhost:8080/servicios/${cookies.get('servicio')}/`+window.location.pathname.substring(6));
@@ -48,7 +54,10 @@ export class Edit extends Component {
                 plato: this.state.plato,
                 grupo: this.state.grupo,
                 bartenderpro: this.state.bartenderpro,
-                garzones: this.state.garzones
+                garzones: this.state.garzones,
+                celular: this.state.celular,
+                correo: this.state.correo,
+                rol: this.state.rol
             }
         })
         if(res.data.msg){
@@ -63,7 +72,7 @@ export class Edit extends Component {
     onInputChange = e => {
         console.log(e.target.value)
         this.setState({
-            salon: e.target.value
+            [e.target.name]: e.target.value
         })
         
     }
@@ -96,6 +105,22 @@ export class Edit extends Component {
                         <option value="otro">Otro</option>
                     </select>
                 </div>
+                {cookies.get('servicio')=="usuarios" &&
+                    <div>
+                        <div className='form-group'>
+                        Rol: 
+                            <select className='form-control' value={this.state.rol} name='rol' onChange={this.onInputChange}>
+                                <option value="ADMINISTRADOR">ADMINISTRADOR</option>
+                                <option value="MODERADOR">MODERADOR</option>
+                                <option value="USUARIO">USUARIO</option>
+                            </select>
+                        </div>
+                        <label>Correo:</label> <br />
+                        <input type="text" className='form-control' name="correo" value={this.state.correo} onChange={this.handleChange}/> <br />
+                        <label>Celular:</label> <br />
+                        <input type="number" className='form-control' name="celular" value={this.state.celular} onChange={this.handleChange}/> <br />
+                    </div> 
+                }
                 {cookies.get('servicio')=="comida" &&
                     <div>
                     <label>Plato:</label> <br />

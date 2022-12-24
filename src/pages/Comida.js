@@ -14,13 +14,13 @@ export  class Comida extends Component {
       invitados: '',
     }
     precioPlatoComida = async (e,f) => {
-    cookies.set('plato',f, { path: "/" })
-    await this.setState({
-        plato: f,
-        precioPlato: e,
-        precio: e* cookies.get('invitados'),
-    })
-    cookies.set('precio',e* cookies.get('invitados'),{path: "/"});
+      cookies.set('plato',f, { path: "/" })
+      await this.setState({
+          plato: f,
+          precioPlato: e,
+          precio: e* cookies.get('invitados'),
+      })
+      cookies.set('precio',e* cookies.get('invitados'),{path: "/"});
     }
   cantidadInvitados = e => {
     this.setState({
@@ -34,38 +34,54 @@ export  class Comida extends Component {
   }
   render() {
     return (
-      <div>
-        <div id="carouselExampleControls" className="carousel slide w-50" data-bs-ride="carousel">
-          <div className="carousel-inner w-100">
-            <div className="carousel-item active " data-bs-pause="true"  onClick={ (()=> this.precioPlatoComida(15,"Lechon")) }>
-                <img src="../img/lechonhorno.jpg" className="d-block w-100 " alt="slide1" />
+      <body class="servicio">
+        <section class="tarjetas-contenedor">
+            <div class="tarjeta-contenedor flotar" onClick={ (()=> this.precioPlatoComida(15,"Lechon")) }>
+                    <div class="tarjeta-img">
+                        <img src="../img/lechonhorno.jpg" alt="Fotografia plato lechon al horno"/>
+                    </div>
+                    <div class="tarjeta-descripcion">
+                        <h2 class="tarjeta-titulo">Lechón al horno</h2>
+                        <div class="tarjeta-descripcion-precio">
+                            <h2>Bs. <span class="precio-numero">15</span> el plato</h2>
+                            <ul class="tarjeta-caracteristicas">
+                                <li>Salón de eventos de lujo</li>
+                                <li>Capacidad para 200 personas</li>
+                                <li>Escenario para música en vivo</li>
+                            </ul>
+                        </div>
+                    </div>
             </div>
-
-            <div className="carousel-item " data-bs-pause="true" onClick={ (()=> this.precioPlatoComida(20,"Pique Macho")) }>
-                <img src="../img/piquemacho.webp" className="d-block w-100  " alt="slide2"/>
-            </div>
-          </div>
-          <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-            <span className="carousel-control-prev-icon" aria-hidden="true"></span> 
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Next</span>
-          </button>
-        </div>
-        
-      <Date_finder>comida</Date_finder>
+            <div class="tarjeta-contenedor flotar" onClick={ (()=> this.precioPlatoComida(20,"Pique Macho")) }>
+                    <div class="tarjeta-img">
+                        <img src="../img/piquemacho.webp" alt="Fotografia plato Pique Macho"/>
+                    </div>
+                    <div class="tarjeta-descripcion">
+                        <h2 class="tarjeta-titulo">Pique Macho</h2>
+                        <div class="tarjeta-descripcion-precio">
+                            <h2>Bs. <span class="precio-numero">20</span> el plato</h2>
+                            <ul class="tarjeta-caracteristicas">
+                                <li>Salón de eventos de lujo</li>
+                                <li>Capacidad para 200 personas</li>
+                                <li>Escenario para música en vivo</li>
+                            </ul>
+                        </div>
+                    </div>
+            </div>      
+        </section>
         <div>
-          <h1>{"Plato " + this.state.plato}</h1>  
-          <h1>{"Precio "+ this.state.precio + " Bs."}</h1>
-        </div>
-      <Request>comida</Request>
-          <div>
-              <label>Invitados:</label> <br />
-              <input type="number" className='form-control' name="invitados" onChange={this.cantidadInvitados}/> <br />
+          <Date_finder>comida</Date_finder>
+          <div class="contenedor-derecho contenedor-solicitud-reserva">
+              <label>
+                <span>Invitados:</span>
+                <input type="number" className='form-control' name="invitados" onChange={this.cantidadInvitados}/>
+              </label>  
+              <p>{"Plato " + this.state.plato}</p>  
+              <p>{"Precio Bs. "+ this.state.precio}</p>
           </div> 
-      </div>
+          <Request>comida</Request>
+        </div>
+      </body>
     )
   }
 }

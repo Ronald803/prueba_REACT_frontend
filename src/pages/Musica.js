@@ -23,36 +23,66 @@ export class Musica extends Component {
   }
   render() {
     return (
-      <div>
-        <div id="carouselExampleControls" className="carousel slide w-50" data-bs-ride="carousel">
-          <div className="carousel-inner w-100">
-            <div className="carousel-item active " data-bs-pause="true"  onClick={ (()=> this.precioSalon(10000,"Sabor Sabor")) }>
-                <img src="../img/saborsabor.jpg" className="d-block w-100 " alt="slide1" />
+      <body class="servicio">
+        <section class="tarjetas-contenedor">
+            <div class="tarjeta-contenedor flotar" onClick={ (()=> this.precioSalon(10000,"Sabor Sabor")) }>
+                    <div class="tarjeta-img">
+                        <img src="../img/saborsabor.jpg" alt="Fotografia grupo musical Sabor Sabor"/>
+                    </div>
+                    <div class="tarjeta-descripcion">
+                        <h2 class="tarjeta-titulo">Sabor Sabor</h2>
+                        <div class="tarjeta-descripcion-precio">
+                            <h2>Bs. <span class="precio-numero">10000</span></h2>
+                            <ul class="tarjeta-caracteristicas">
+                                <li>Salón de eventos de lujo</li>
+                                <li>Capacidad para 200 personas</li>
+                                <li>Escenario para música en vivo</li>
+                            </ul>
+                        </div>
+                    </div>
             </div>
-
-            <div className="carousel-item " data-bs-pause="true" onClick={ (()=> this.precioSalon(12000,"Jambao")) }>
-                <img src="../img/jambao.webp" className="d-block w-100  " alt="slide2"/>
+            <div class="tarjeta-contenedor flotar" onClick={ (()=> this.precioSalon(12000,"Jambao")) }>
+                    <div class="tarjeta-img">
+                        <img src="../img/jambao.webp" alt="Fotografia grupo musical Jambao"/>
+                    </div>
+                    <div class="tarjeta-descripcion">
+                        <h2 class="tarjeta-titulo">Jambao</h2>
+                        <div class="tarjeta-descripcion-precio">
+                            <h2>Bs. <span class="precio-numero">12000</span></h2>
+                            <ul class="tarjeta-caracteristicas">
+                                <li>Salón de eventos de lujo</li>
+                                <li>Capacidad para 200 personas</li>
+                                <li>Escenario para música en vivo</li>
+                            </ul>
+                        </div>
+                    </div>
             </div>
-
-            <div className="carousel-item " data-bs-pause="true" onClick={ (()=> this.precioSalon(14000,"Kalamarka")) }>
-                <img src="../img/kalamarka.jpg" className="d-block w-100  " alt="slide2"/>
-            </div>
-
+            <div class="tarjeta-contenedor flotar" onClick={ (()=> this.precioSalon(14000,"Kalamarka")) }>
+                    <div class="tarjeta-img">
+                        <img src="../img/kalamarka.jpg" alt="Fotografia grupo musical Kalamarca"/>
+                    </div>
+                    <div class="tarjeta-descripcion">
+                        <h2 class="tarjeta-titulo">Kalamarka</h2>
+                        <div class="tarjeta-descripcion-precio">
+                            <h2>Bs. <span class="precio-numero">14000</span></h2>
+                            <ul class="tarjeta-caracteristicas">
+                                <li>Salón de eventos de lujo</li>
+                                <li>Capacidad para 200 personas</li>
+                                <li>Escenario para música en vivo</li>
+                            </ul>
+                        </div>
+                    </div>
+            </div>      
+        </section>
+        <div>
+          <Date_finder>musica</Date_finder>
+          <div class="contenedor-derecho contenedor-solicitud-reserva">
+              <p>Artista: {this.state.form.grupo}</p>
+              <p>Precio: Bs. {this.state.form.precio}</p>
           </div>
-          <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-            <span className="carousel-control-prev-icon" aria-hidden="true"></span> 
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Next</span>
-          </button>
+          <Request>musica</Request>
         </div>
-      <Date_finder>musica</Date_finder>
-      <h1>Artista: {this.state.form.grupo}</h1>
-      <h1>Precio: {this.state.form.precio}</h1>
-      <Request>musica</Request>
-      </div>
+      </body>
     )
   }
 }
