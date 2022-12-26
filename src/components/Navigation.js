@@ -15,6 +15,7 @@ export default class Navigation extends Component {
     return (
       <div class="barra-superior">
       <header>
+          <img src="../img/icons/icon_menu.svg" alt="menu" class="logo-menu"/>
           <em>Eventos Gran Poder</em>
           <ul class="header-navegacion">
               <a href="/"><li>Inicio</li></a>

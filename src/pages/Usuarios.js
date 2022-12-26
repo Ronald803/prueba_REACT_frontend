@@ -39,60 +39,50 @@ export class Usuarios extends Component {
       render() {
         console.log(this.state.users)
         return (
-          <div className='row'>
-            <div className='col-md-4'>
-              <div className='card card-body'>
-                <h3>Ingresa el nombre del usuario:</h3>
-                <form onSubmit={this.onSubmit}>
-                  <div className='form-group'>
-                    <input
+          <div>
+            <div class="contenedor-derecho contenedor-fecha-disponibilidad">
+              <form class="form-selector-fecha" onSubmit={this.onSubmit}>
+                  <label>
+                      <span>Ingresa el nombre del usuario: </span>
+                      <input
                       type="string"
-                      className='form-control'
-                      onChange={this.onChangeDate}
-                    />
+                      onChange={this.onChangeDate}/>
+                      <button type="submit">Consultar</button>
+                  </label>
+              </form>
+            </div>
+            <div>
+            {this.state.users.map(user =>(
+            <div key={user._id}>  
+              { cookies.get('rol')=="ADMINISTRADOR" && 
+                <div class="resultado-tarjeta">
+                  <div>
+                    <h5>Nombre usuario {user.nombreusuario}</h5>
                   </div>
-                  <button type="submit" className='btn btn-primary'>
-                    Consultar
-                  </button>
-                </form>
-              </div>
-            </div>
-    
-            <div className='row'>
-              {
-                this.state.users.map(user =>
-                ( 
-                  <div className='col-md-4 p-2' key={user.uid}>  
-                  { cookies.get('rol')=="ADMINISTRADOR" && 
-                        <div className='card'>
-                          <div className='card-header'>
-                            <h5>Nombre de Usuario: {user.nombreusuario}</h5>
+                  <div>
+                    <p>Correo electrónico: {user.correo}</p>
+                    <p>Característica: {user.caracteristica}</p>
+                    <p>Celular: {user.celular}</p>
+                    <p>Rol: {user.rol}</p>
+                    <p>ID: {user.uid}</p>
+                    { user.caracteristica!='eliminado' &&
+                      <div>
+                          <div class="resultado-botones">
+                          <Link class="link" to={"/edit/" + user.uid}>Editar</Link>
+                          <a class="boton-eliminar flotar" onClick={(() => this.deleteUsuario(user.uid))}>Eliminar Usuario</a>
                           </div>
-                          <div className='card-body'>
-                            <p>Correo electrónico: {user.correo}</p>
-                            <p>Caracteristica: {user.caracteristica}</p>
-                            <p>Celular: {user.celular}</p>
-                            <p>Rol: {user.rol}</p>
-                            <p>ID: {user.uid}</p>
-                            { user.caracteristica=='eliminado' ? 
-                                <p>ELIMINADO</p>:
-                                <div className='card-footer d-flex justify-content-between'>
-                                <button className='btn btn-danger' onClick={(() => this.deleteUsuario(user.uid))}>
-                                      Eliminar Usuario
-                                </button>
-                                <Link className='btn btn-secondary' to={"/edit/" + user.uid}>Editar</Link>
-                                </div>
-                            }
-                          </div>
-                        </div> 
-                        }
-                  </div>  
-                  )
-                )
+                      </div> 
+                    }
+                    
+                  </div>
+                </div> 
               }
-            </div>
+            </div>  
+              )
+            )}
           </div>
-        )
-      }
+        </div>
+      )
+    }
     
 }

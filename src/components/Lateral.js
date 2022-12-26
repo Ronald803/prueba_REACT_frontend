@@ -12,7 +12,7 @@ export default class Lateral extends Component {
             <a href="/servicios/comida"><div class="flotar">Comida</div></a>
             <a href="/servicios/musica"><div class="flotar">Música</div></a>
             <a href="/servicios/bartender"><div class="flotar">Bartender</div></a>
-            <a href="/usuarios"><div class="flotar">Usuarios</div></a>
+            { cookies.get('rol')=="ADMINISTRADOR" && <a href="/usuarios"><div class="flotar">Usuarios</div></a>}
         </section>
     )
   }

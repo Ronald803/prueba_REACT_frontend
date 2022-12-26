@@ -8,6 +8,9 @@
   background-color: black;
   align-self: center;
 }
+.inactivo{
+  display: none;
+}
 header {
   height: 100px;
   max-width: 1500px;
@@ -18,6 +21,7 @@ header {
   align-items: center;
   margin-bottom: 10px;
 }
+.logo-menu{display: none;}
 .header-navegacion{
   display: flex;
   list-style: none;
@@ -36,9 +40,6 @@ header em {
   color: white;
 }
 a{text-decoration: none; color: white}
-.barra-nav-lateral{
-  margin-top: 25px;
-}
 .barra-nav-lateral div{
   background-color: #464445;
   min-width: 118px;
@@ -56,6 +57,8 @@ a{text-decoration: none; color: white}
 .tarjetas-contenedor{
   justify-content: center;
   justify-items: center;
+  padding: 15px;
+  padding-top: 0px;
   margin-left: 10px;
 }
 .tarjeta-contenedor{
@@ -81,6 +84,9 @@ a{text-decoration: none; color: white}
   text-align: center;
   font-size: 2rem;
   height: 60px;
+  padding: 8px;
+  background-color: black;
+  color: white;
 }
 .tarjeta-descripcion{
   margin: auto;
@@ -133,6 +139,10 @@ li{
 .contenedor-solicitud-reserva{
   background-color: #7edab6;
 }
+.contenedor-editar{
+  background-color: #464445;
+  line-height: 40px;
+}
 .resultado-tarjeta{
   margin: auto;
   margin-top: 5px;
@@ -143,6 +153,7 @@ li{
   border-radius: 10px;
   line-height: 5px;
   font-size: 1.2rem;
+  text-align: center;
 }
 .resultado-botones{
   line-height: normal;
@@ -166,6 +177,73 @@ footer{
   color: white;
   font-size: 1.1rem;
   text-align: center;
+}
+@media (max-width: 1210px){
+  #principal-body{display: block;}
+  .barra-nav-lateral{
+    width: 100%;
+    display: flex;
+    justify-content: center;    
+  }
+  .servicio{
+    display: grid;
+    grid-template-columns: 1fr 302px;
+  }
+  .tarjeta-titulo{height: auto;}
+  .tarjeta-descripcion-precio h2{margin: 0 auto 0 auto;}
+}
+@media (max-width: 920px){
+  .tarjeta-contenedor{display: block; position:relative;}
+  .tarjeta-descripcion-precio{
+    width: 100%;
+    display: inline;
+  }
+}
+@media (max-width: 670px){
+  .barra-nav-lateral{display: none;}
+  .header-navegacion{display: none;}
+  .servicio{display: inline;}
+  .logo-menu{
+    display: block;
+    background-color: white;
+    padding: 8px;
+    border-radius: 50%;
+    margin-left: 5px;
+  }
+  .tarjetas-contenedor{
+    padding: 5px;
+    margin: 0px;
+  }
+  .tarjeta-descripcion{
+    display: flex;
+    width: max-content;
+    justify-content: center;
+  }
+  .tarjeta-descripcion-precio{
+    line-height: 22px;
+    display: inline;
+  }
+  .precio-numero {font-size: 1rem;}
+  .tarjeta-descripcion-precio h2{
+    font-size: 0.8rem;
+    border-radius: 40px;
+    border: 1px solid white;
+    padding: 0px;
+    padding-left: 9px;
+  }
+  .tarjeta-titulo{
+    font-size: 1.4rem;
+    position: absolute;
+    background-color: black;
+    color: white;
+    border-radius: 40px;
+    border: 2px solid white;
+    height: 33px;
+    top: -18px;
+    padding: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
 }
 
 

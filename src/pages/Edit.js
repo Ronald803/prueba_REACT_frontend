@@ -94,71 +94,63 @@ export class Edit extends Component {
       }
   render() {
     return (
-        <div className='col-md-6 offset-md-3'>
-            <div className='card card-body'>
-                <h4>{this.state.evento}</h4>
-                <div className='form-group'>
-                    Salon: 
-                    <select className='form-control' value={this.state.salon} name='salon' onChange={this.onInputChange}>
-                        <option value="golden">Golden</option>
-                        <option value="platinum">Platinum</option>
-                        <option value="otro">Otro</option>
+    <div class="contenedor-derecho contenedor-editar">
+        <h4>{this.state.evento}</h4>
+        <div>
+            Salon: 
+            <select value={this.state.salon} name='salon' onChange={this.onInputChange}>
+                <option value="golden">Golden</option>
+                <option value="platinum">Platinum</option>
+                <option value="otro">Otro</option>
+            </select>
+        </div>
+        {cookies.get('servicio')=="usuarios" &&
+            <div>
+                <div>
+                Rol: 
+                    <select value={this.state.rol} name='rol' onChange={this.onInputChange}>
+                        <option value="ADMINISTRADOR">ADMINISTRADOR</option>
+                        <option value="MODERADOR">MODERADOR</option>
+                        <option value="USUARIO">USUARIO</option>
                     </select>
                 </div>
-                {cookies.get('servicio')=="usuarios" &&
-                    <div>
-                        <div className='form-group'>
-                        Rol: 
-                            <select className='form-control' value={this.state.rol} name='rol' onChange={this.onInputChange}>
-                                <option value="ADMINISTRADOR">ADMINISTRADOR</option>
-                                <option value="MODERADOR">MODERADOR</option>
-                                <option value="USUARIO">USUARIO</option>
-                            </select>
-                        </div>
-                        <label>Correo:</label> <br />
-                        <input type="text" className='form-control' name="correo" value={this.state.correo} onChange={this.handleChange}/> <br />
-                        <label>Celular:</label> <br />
-                        <input type="number" className='form-control' name="celular" value={this.state.celular} onChange={this.handleChange}/> <br />
-                    </div> 
-                }
-                {cookies.get('servicio')=="comida" &&
-                    <div>
-                    <label>Plato:</label> <br />
-                    <input type="text" className='form-control' name="plato" value={this.state.plato} onChange={this.handleChange}/> <br />
-                    <label>Invitados:</label> <br />
-                    <input type="number" className='form-control' name="invitados" value={this.state.invitados} onChange={this.handleChange}/> <br />
-                    </div> 
-                }
-                {cookies.get('servicio')=="musica" &&
-                    <div>
-                    <label>Artista:</label> <br />
-                    <input type="text" className='form-control' name="grupo" value={this.state.grupo} onChange={this.handleChange}/> <br />
-                    </div> 
-                }
-                {cookies.get('servicio')=="bartender" &&
-                    <div>
-                    <label>Bartenders:</label> <br />
-                    <input type="number" className='form-control' name="bartenderpro" value={this.state.bartenderpro} onChange={this.handleChange}/> <br />
-                    <label>Garzones:</label> <br />
-                    <input type="number" className='form-control' name="garzones" value={this.state.garzones} onChange={this.handleChange}/> <br />
-                    </div> 
-                }
-                <div className='form-group'>
-                    <input
-                        type="date"
-                        className='form-control'
-                        value={this.state.fecha}
-                        onChange={this.onChangeDate}
-                    />
-                </div>
-                <form onSubmit={this.onSubmit}>
-                    <button type='submit' className='btn btn-primary'>
-                        Actualizar
-                    </button>
-
-                </form>
-            </div>
+                <label>Correo:</label> <br />
+                <input type="text" name="correo" value={this.state.correo} onChange={this.handleChange}/> <br />
+                <label>Celular:</label> <br />
+                <input type="number" name="celular" value={this.state.celular} onChange={this.handleChange}/> <br />
+            </div> 
+        }
+        {cookies.get('servicio')=="comida" &&
+            <div>
+            <label>Plato:</label> <br />
+            <input type="text" name="plato" value={this.state.plato} onChange={this.handleChange}/> <br />
+            <label>Invitados:</label> <br />
+            <input type="number" name="invitados" value={this.state.invitados} onChange={this.handleChange}/> <br />
+            </div> 
+        }
+        {cookies.get('servicio')=="musica" &&
+            <div>
+            <label>Artista:</label> <br />
+            <input type="text" name="grupo" value={this.state.grupo} onChange={this.handleChange}/> <br />
+            </div> 
+        }
+        {cookies.get('servicio')=="bartender" &&
+            <div>
+            <label>Bartenders:</label> <br />
+            <input type="number" name="bartenderpro" value={this.state.bartenderpro} onChange={this.handleChange}/> <br />
+            <label>Garzones:</label> <br />
+            <input type="number" name="garzones" value={this.state.garzones} onChange={this.handleChange}/> <br />
+            </div> 
+        }
+        <div>
+            <input type="date" value={this.state.fecha} onChange={this.onChangeDate}/>
         </div>
+        <form onSubmit={this.onSubmit}>
+            <button type='submit'>
+                Actualizar
+            </button>
+        </form>
+    </div>
     )
   }
 }
