@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import Cookies from 'universal-cookie';
+import NavBar from './navbar'
 const cookies = new Cookies();
 
 export default class Navigation extends Component {
@@ -15,7 +16,7 @@ export default class Navigation extends Component {
     return (
       <div class="barra-superior">
       <header>
-          <img src="../img/icons/icon_menu.svg" alt="menu" class="logo-menu"/>
+          <NavBar/>
           <em>Eventos Gran Poder</em>
           <ul class="header-navegacion">
               <a href="/"><li>Inicio</li></a>
@@ -27,7 +28,8 @@ export default class Navigation extends Component {
               { cookies.get('nombreusuario') &&
               <button onClick={()=>this.cerrarSesion()}>Cerrar Sesión ( {cookies.get('nombreusuario')} )</button>}
           </ul>
-        </header> 
+        </header>
+        
       </div>
     )
   }

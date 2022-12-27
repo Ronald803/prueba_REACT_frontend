@@ -59,32 +59,30 @@ export class Login extends Component {
   }
   render() {
     return (
-      <div className='containerPrincipal'>
-        <div className='containerSecundario'>
-          <div className='form-group'>
-            <label>Usuario:</label>
-            <br/>
-              <input 
-                type="text"
-                className='form-control'
-                name="username"
-                onChange={this.handleChange}
-              />
-            <br/>
-            <label>Contraseña: </label>
-            <br/>
-                <input
-                type="password"
-                className='form-control'
-                name='password'
-                onChange={this.handleChange}
-              />
-            <br/>
-            <button className='btn btn-primary' onClick={()=> this.iniciarSesion()} >Iniciar Sesión</button>
-            <button className='btn btn-primary' onClick={()=> this.CrearUsuario()} >Crear Usuario</button>
+          <div class="contenedor-secundario">
+            <form class="contenedor-derecho">
+              <label>Usuario:</label>
+              <br/>
+                <input 
+                  type="text"
+                  className='form-control'
+                  name="username"
+                  onChange={this.handleChange}
+                />
+              <br/>
+              <label>Contraseña: </label>
+              <br/>
+                  <input
+                  type="password"
+                  className='form-control'
+                  name='password'
+                  onChange={this.handleChange}
+                />
+              <br/>
+              <button class="resultado-botones" onClick={()=> this.iniciarSesion()} >Iniciar Sesión</button>
+              <button class="resultado-botones" onClick={()=> this.CrearUsuario()} >Crear Usuario</button>
+            </form>  
           </div>
-        </div>
-      </div>
     );
   }
 }
