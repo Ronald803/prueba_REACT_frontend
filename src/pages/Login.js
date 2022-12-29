@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Cookies from 'universal-cookie';
 
-const baseUrl="http://localhost:8080/auth/login";
+const baseUrl="https://backend-sistema-reservas.vercel.app/auth/login";
 const cookies = new Cookies();
 
 
@@ -25,7 +25,8 @@ export class Login extends Component {
     console.log(this.state.form);
   }
   CrearUsuario=()=>{
-    window.location.href='/Create_User'
+    console.log("click en boton crear usuario")
+    window.location.href='/Create_user'
   }
   iniciarSesion= async()=>{
     await axios.post(baseUrl, {correo: this.state.form.username, contraseña: this.state.form.password})
@@ -60,7 +61,7 @@ export class Login extends Component {
   render() {
     return (
           <div class="contenedor-secundario">
-            <form class="contenedor-derecho">
+            <div class="contenedor-derecho">
               <label>Usuario:</label>
               <br/>
                 <input 
@@ -81,7 +82,7 @@ export class Login extends Component {
               <br/>
               <button class="resultado-botones" onClick={()=> this.iniciarSesion()} >Iniciar Sesión</button>
               <button class="resultado-botones" onClick={()=> this.CrearUsuario()} >Crear Usuario</button>
-            </form>  
+            </div>  
           </div>
     );
   }

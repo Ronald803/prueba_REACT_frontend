@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Date_finder from '../components/Date_finder'
 import { Request } from '../components/Request';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 

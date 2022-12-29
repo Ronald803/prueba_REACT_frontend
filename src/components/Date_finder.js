@@ -24,7 +24,7 @@ export default class Date_finder extends Component {
 
   onSubmit = async e => {
     e.preventDefault();
-    const res = await axios.get(`http://localhost:8080/servicios/${this.props.children}?fecha=${this.state.date}`);
+    const res = await axios.get(`https://backend-sistema-reservas.vercel.app/servicios/${this.props.children}?fecha=${this.state.date}`);
     this.setState({ users: res.data });
     console.log(res.data)
     cookies.set('fecha', this.state.date, { path: "/" });
@@ -33,7 +33,7 @@ export default class Date_finder extends Component {
 
   deleteNote = async(id) => {
     console.log(id)
-    await axios.delete(`http://localhost:8080/servicios/${this.props.children}/`+id,{ headers: { "x-token": cookies.get('token') } })
+    await axios.delete(`https://backend-sistema-reservas.vercel.app/servicios/${this.props.children}/`+id,{ headers: { "x-token": cookies.get('token') } })
     .then(response => {
       console.log(response.data);
       console.log(response.data.msg);

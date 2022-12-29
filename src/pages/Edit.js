@@ -20,7 +20,7 @@ export class Edit extends Component {
     async componentDidMount(){
         const res = await axios({
             method: 'put',
-            url: `http://localhost:8080/servicios/${cookies.get('servicio')}/${window.location.pathname.substring(6)}`,
+            url: `https://backend-sistema-reservas.vercel.app/servicios/${cookies.get('servicio')}/${window.location.pathname.substring(6)}`,
             headers: {'x-token': cookies.get('token')}
         })
         this.setState({
@@ -37,7 +37,7 @@ export class Edit extends Component {
             rol: res.data.rol
         })
         console.log("Este es id:"+ window.location.pathname.substring(6));
-        console.log(`http://localhost:8080/servicios/${cookies.get('servicio')}/`+window.location.pathname.substring(6));
+        console.log(`https://backend-sistema-reservas.vercel.app/servicios/${cookies.get('servicio')}/`+window.location.pathname.substring(6));
         console.log("x-token:"+ cookies.get('token'))
         console.log(res.data);
     }
@@ -45,7 +45,7 @@ export class Edit extends Component {
         e.preventDefault()
         const res = await axios({
             method: 'put',
-            url: `http://localhost:8080/servicios/${cookies.get('servicio')}/${window.location.pathname.substring(6)}`,
+            url: `https://backend-sistema-reservas.vercel.app/servicios/${cookies.get('servicio')}/${window.location.pathname.substring(6)}`,
             headers: {'x-token': cookies.get('token')},
             data: {
                 salon: this.state.salon,

@@ -1,7 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 import './App.css';
 import Navigation from './components/Navigation';
 import { Bartender, Comida, Home, Login, Create_User, Musica, NotFoundPage, Salone, Edit, Usuarios } from './pages/index';

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
@@ -25,7 +25,7 @@ export class Request extends Component {
     console.log(this.state.form);
   }
   registrarse = async () => {
-    const baseUrl = `http://localhost:8080/servicios/${this.props.children}`; 
+    const baseUrl = `https://backend-sistema-reservas.vercel.app/servicios/${this.props.children}`; 
     await axios.post(baseUrl, {
                                 salon: cookies.get('salon'),
                                 servicio: this.props.children,
@@ -56,7 +56,7 @@ export class Request extends Component {
   render() {
     return (
       <div class="contenedor-derecho contenedor-solicitud-reserva">
-        <form class="form-selector-fecha" onSubmit={this.onSubmit}>
+        <div class="form-selector-fecha" onSubmit={this.onSubmit}>
           <label>
             <span>Nombre de tu evento: </span>
             <input type="text" name="event" onChange={this.handleChange}/>
@@ -74,7 +74,7 @@ export class Request extends Component {
             }
             <button onClick={() => this.registrarse()} >Reservar</button>
           </label>
-        </form>
+        </div>
       </div>
     )
   }

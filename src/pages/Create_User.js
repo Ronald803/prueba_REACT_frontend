@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Cookies from 'universal-cookie';
 
-const baseUrl="http://localhost:8080/usuarios";
+const baseUrl="https://backend-sistema-reservas.vercel.app/usuarios";
 const cookies = new Cookies();
 
 
@@ -64,14 +63,14 @@ export class Create_User extends Component {
   }
   render() {
     return (
-      <div className='containerPrincipal'>
-        <div className='containerSecundario'>
-          <div className='form-group'>
+      
+        <div class="contenedor-secundario">
+          <div class="contenedor-derecho">
             <label>Nombre Usuario:</label>
             <br/>
               <input 
                 type="text"
-                className='form-control'
+                
                 name="username"
                 onChange={this.handleChange}
               />
@@ -80,7 +79,7 @@ export class Create_User extends Component {
             <br/>
               <input 
                 type="text"
-                className='form-control'
+                
                 name="email"
                 onChange={this.handleChange}
               />
@@ -89,7 +88,7 @@ export class Create_User extends Component {
             <br/>
               <input 
                 type="text"
-                className='form-control'
+                
                 name="cellphone"
                 onChange={this.handleChange}
               />
@@ -99,15 +98,15 @@ export class Create_User extends Component {
             <br/>
                 <input
                 type="password"
-                className='form-control'
+                
                 name='password'
                 onChange={this.handleChange}
               />
             <br/>
-            <button className='btn btn-primary' onClick={()=> this.registrarse()} >Registrarse</button>
+            <button class="resultado-botones" onClick={()=> this.registrarse()} >Registrarse</button>
           </div>
         </div>
-      </div>
+      
     );
   }
   }
