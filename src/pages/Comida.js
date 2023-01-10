@@ -45,9 +45,9 @@ export  class Comida extends Component {
                         <div class="tarjeta-descripcion-precio">
                             <h2>Bs. <span class="precio-numero">15</span> el plato</h2>
                             <ul class="tarjeta-caracteristicas">
-                                <li>Salón de eventos de lujo</li>
-                                <li>Capacidad para 200 personas</li>
-                                <li>Escenario para música en vivo</li>
+                                <li>Lechón crocante al horno con sabor a casa "Cheff Janne"</li>
+                                <li>Guarniciones: papa, camote, postre, choclos tiernos</li>
+                                <li>Ensalada y llajuita incluidas</li>
                             </ul>
                         </div>
                     </div>
@@ -61,9 +61,9 @@ export  class Comida extends Component {
                         <div class="tarjeta-descripcion-precio">
                             <h2>Bs. <span class="precio-numero">20</span> el plato</h2>
                             <ul class="tarjeta-caracteristicas">
-                                <li>Salón de eventos de lujo</li>
-                                <li>Capacidad para 200 personas</li>
-                                <li>Escenario para música en vivo</li>
+                                <li>Sabroso y picantito</li>
+                                <li>Papas fritas en gajos, carne de res, chorizo, huevo duro, cebolla, tomate</li>
+                                <li>Aderezos incluidos</li>
                             </ul>
                         </div>
                     </div>
@@ -76,8 +76,8 @@ export  class Comida extends Component {
                 <span>Invitados:</span>
                 <input type="number" className='form-control' name="invitados" onChange={this.cantidadInvitados}/>
               </label>  
-              <p>{"Plato " + this.state.plato}</p>  
-              <p>{"Precio Bs. "+ this.state.precio}</p>
+              <p>{"Plato: " + this.state.plato}</p>  
+              <p>{"Precio: Bs. "+ this.state.precio}</p>
           </div> 
           <Request>comida</Request>
         </div>

@@ -34,9 +34,9 @@ export class Musica extends Component {
                         <div class="tarjeta-descripcion-precio">
                             <h2>Bs. <span class="precio-numero">10000</span></h2>
                             <ul class="tarjeta-caracteristicas">
-                                <li>Salón de eventos de lujo</li>
-                                <li>Capacidad para 200 personas</li>
-                                <li>Escenario para música en vivo</li>
+                                <li>"Vida hay una sola, así que a disfrutar con la compañía de nuestra cumbia con sabor"</li>
+                                <li>Más de 12 músicos en escena</li>
+                                <li>Ameniza tu acontecimiento junto a sus éxitos: "Amor mío", "Tú me vas a dejar", "Quién no lloro por amor" y mucho más.</li>
                             </ul>
                         </div>
                     </div>
@@ -50,9 +50,9 @@ export class Musica extends Component {
                         <div class="tarjeta-descripcion-precio">
                             <h2>Bs. <span class="precio-numero">12000</span></h2>
                             <ul class="tarjeta-caracteristicas">
-                                <li>Salón de eventos de lujo</li>
-                                <li>Capacidad para 200 personas</li>
-                                <li>Escenario para música en vivo</li>
+                                <li>Cumbia Argentina sonidera</li>
+                                <li>Más de 20 años de éxitos</li>
+                                <li>Ameniza tu acontecimiento junto a sus éxitos: "Mi niña hermosa", "Lo que me duele", "La tengo que olvidar" y más.</li>
                             </ul>
                         </div>
                     </div>
@@ -66,9 +66,8 @@ export class Musica extends Component {
                         <div class="tarjeta-descripcion-precio">
                             <h2>Bs. <span class="precio-numero">14000</span></h2>
                             <ul class="tarjeta-caracteristicas">
-                                <li>Salón de eventos de lujo</li>
-                                <li>Capacidad para 200 personas</li>
-                                <li>Escenario para música en vivo</li>
+                                <li>Lo mejor de la música andino amazónico</li>
+                                <li>Ameniza tu acontecimiento junto a sus éxitos: "Cuando florezca el chuño", "Ama Sua, Ama Llulla, Ama Kella", "Pastorcita", "Jaguar" y mucho más.</li>
                             </ul>
                         </div>
                     </div>

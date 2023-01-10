@@ -36,10 +36,10 @@ export class Edit extends Component {
             celular: res.data.celular,
             rol: res.data.rol
         })
-        console.log("Este es id:"+ window.location.pathname.substring(6));
-        console.log(`https://backend-sistema-reservas.vercel.app/servicios/${cookies.get('servicio')}/`+window.location.pathname.substring(6));
-        console.log("x-token:"+ cookies.get('token'))
-        console.log(res.data);
+        //console.log("Este es id:"+ window.location.pathname.substring(6));
+        //console.log(`https://backend-sistema-reservas.vercel.app/servicios/${cookies.get('servicio')}/`+window.location.pathname.substring(6));
+        //console.log("x-token:"+ cookies.get('token'))
+        //console.log(res.data);
     }
     onSubmit = async e=>{
         e.preventDefault()
@@ -65,12 +65,12 @@ export class Edit extends Component {
         }else{
             alert("Su actualización fue realizada con éxito");
         }
-        console.log(res.data.msg);
-        console.log(res)
+        //console.log(res.data.msg);
+        //console.log(res)
     }
     
     onInputChange = e => {
-        console.log(e.target.value)
+        //console.log(e.target.value)
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -78,7 +78,7 @@ export class Edit extends Component {
     }
 
     onChangeDate = e => {
-        console.log(e.target.value)
+        //console.log(e.target.value)
         this.setState({
             fecha: e.target.value
         })
@@ -90,7 +90,7 @@ export class Edit extends Component {
             [e.target.name]: e.target.value
           
         });
-        console.log(this.state);
+        //console.log(this.state);
       }
   render() {
     return (

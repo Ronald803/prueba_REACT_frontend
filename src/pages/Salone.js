@@ -23,7 +23,7 @@ precioSalon = async (e,f) => {
       precio: e,
     }
   })
-  console.log("de state"+this.state.form.salon)
+  //console.log("de state"+this.state.form.salon)
 }
   render() {
     return (
@@ -39,8 +39,8 @@ precioSalon = async (e,f) => {
                             <h2>Bs. <span class="precio-numero">7000</span></h2>
                             <ul class="tarjeta-caracteristicas">
                                 <li>Salón de eventos de lujo</li>
-                                <li>Capacidad para 200 personas</li>
-                                <li>Escenario para música en vivo</li>
+                                <li>Capacidad para 150 personas</li>
+                                <li>Cuenta con escenario para música en vivo, barra para bebidas, area wifi y parqueo</li>
                             </ul>
                         </div>
                     </div>
@@ -54,9 +54,9 @@ precioSalon = async (e,f) => {
                         <div class="tarjeta-descripcion-precio">
                             <h2>Bs. <span class="precio-numero">5000</span></h2>
                             <ul class="tarjeta-caracteristicas">
-                                <li>Salón de eventos de lujo</li>
-                                <li>Capacidad para 200 personas</li>
-                                <li>Escenario para música en vivo</li>
+                                <li>Salón de eventos hermoso, pequeño e íntimo</li>
+                                <li>Capacidad para 100 personas</li>
+                                <li>Escenario para música en vivo y parqueo</li>
                             </ul>
                         </div>
                     </div>
@@ -66,7 +66,7 @@ precioSalon = async (e,f) => {
           <Date_finder>salones</Date_finder>
           <div class="contenedor-derecho contenedor-solicitud-reserva">
               <p>{"Salon: " + this.state.form.salon}</p>  
-              <p>{"Precio Bs. "+ this.state.form.precio}</p>
+              <p>{"Precio: Bs. "+ this.state.form.precio}</p>
           </div> 
           <Request>salones</Request>
         </div>

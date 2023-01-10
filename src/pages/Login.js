@@ -22,16 +22,16 @@ export class Login extends Component {
         [e.target.name]: e.target.value
       }
     });
-    console.log(this.state.form);
+    //console.log(this.state.form);
   }
   CrearUsuario=()=>{
-    console.log("click en boton crear usuario")
+    //console.log("click en boton crear usuario")
     window.location.href='/Create_user'
   }
   iniciarSesion= async()=>{
     await axios.post(baseUrl, {correo: this.state.form.username, contraseña: this.state.form.password})
     .then(response=>{
-      console.log(response.data);  
+      //console.log(response.data);  
       return response.data;
     })
     .then(response=>{
@@ -48,7 +48,7 @@ export class Login extends Component {
     }) 
   
     .catch(error=>{
-      console.log(error);
+      //console.log(error);
       alert(`Lo sentimos. ${error.response.data.msg}`);
     })
   }
@@ -62,20 +62,19 @@ export class Login extends Component {
     return (
           <div class="contenedor-secundario">
             <div class="contenedor-derecho">
-              <label>Usuario:</label>
+              <label>Correo Electrónico:</label>
               <br/>
                 <input 
                   type="text"
-                  className='form-control'
                   name="username"
                   onChange={this.handleChange}
                 />
+              <br/>
               <br/>
               <label>Contraseña: </label>
               <br/>
                   <input
                   type="password"
-                  className='form-control'
                   name='password'
                   onChange={this.handleChange}
                 />

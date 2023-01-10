@@ -22,7 +22,7 @@ export class Request extends Component {
     if(e.target.name=="salon"){
       cookies.set('salon', this.state.form.salon, {path: "/"});
       }
-    console.log(this.state.form);
+    //console.log(this.state.form);
   }
   registrarse = async () => {
     const baseUrl = `https://backend-sistema-reservas.vercel.app/servicios/${this.props.children}`; 
@@ -42,8 +42,8 @@ export class Request extends Component {
                               }
                             , { headers: { "x-token": cookies.get('token') } })
       .then(response => {
-        console.log(response.data);
-        console.log(response.data.msg);
+        //console.log(response.data);
+        //console.log(response.data.msg);
         alert('Reserva realizada');
         return response.data;
       })

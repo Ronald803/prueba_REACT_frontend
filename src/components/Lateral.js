@@ -4,7 +4,7 @@ const cookies = new Cookies();
 
 export default class Lateral extends Component {
    render() {
-    console.log(`Esta es una prueba ${cookies.get('nombreusuario')}`);
+    //console.log(`Esta es una prueba ${cookies.get('nombreusuario')}`);
     return (
         <section  class="barra-nav-lateral">
             <a href="/"><div class="flotar">Inicio</div></a>

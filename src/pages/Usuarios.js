@@ -16,17 +16,17 @@ export class Usuarios extends Component {
       }
       onSubmit = async e => {
         e.preventDefault();
-        const res = await axios.get(`http://localhost:8080/usuarios?nombreusuario=${this.state.nombreusuariobusqueda}`,{ headers: { "x-token": cookies.get('token') } });
+        const res = await axios.get(`https://backend-sistema-reservas.vercel.app/usuarios?nombreusuario=${this.state.nombreusuariobusqueda}`,{ headers: { "x-token": cookies.get('token') } });
         this.setState({ users: res.data });
         cookies.set('servicio', 'usuarios', {path : "/"});
-        console.log(res.data)
+        //console.log(res.data)
       }
       deleteUsuario = async(id) => {
-        console.log(id)
-        await axios.delete(`http://localhost:8080/usuarios/`+id,{ headers: { "x-token": cookies.get('token') } })
+        //console.log(id)
+        await axios.delete(`https://backend-sistema-reservas.vercel.app/usuarios/`+id,{ headers: { "x-token": cookies.get('token') } })
         .then(response => {
-          console.log(response.data);
-          console.log(response.data.msg);
+          //console.log(response.data);
+          //console.log(response.data.msg);
           return response.data;
         })
         .catch(error => {
@@ -37,9 +37,10 @@ export class Usuarios extends Component {
       }
     
       render() {
-        console.log(this.state.users)
+        //console.log(this.state.users)
         return (
           <div>
+            <br/>
             <div class="contenedor-derecho contenedor-fecha-disponibilidad">
               <form class="form-selector-fecha" onSubmit={this.onSubmit}>
                   <label>
