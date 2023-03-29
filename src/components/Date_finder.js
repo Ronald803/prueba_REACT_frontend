@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Cookies from 'universal-cookie';
 import {Link} from "react-router-dom";
+import { dateLimits } from '../middleware/minMaxDate';
 const cookies = new Cookies();
-export default class Date_finder extends Component {
 
+const limits = dateLimits()
+export default class Date_finder extends Component {
   state = {
     users: [],
     date: '',
@@ -16,7 +18,10 @@ export default class Date_finder extends Component {
   }
 
   onChangeDate = (e) => {
-    //console.log(e.target.value)
+    //console.log({minDate});
+    console.log("Reservation Date",e.target.value);
+    //console.log({minDate});
+    //console.log({todayDate});
     this.setState({
       date: e.target.value
     })
@@ -81,8 +86,11 @@ export default class Date_finder extends Component {
                     <span>¿Cuándo requieres nuestros servicios?</span><br/>
                     <span>Consulta la disponibilidad </span>
                     <input
-                    type="date"
-                    onChange={this.onChangeDate}/>
+                      type="date"
+                      onChange={this.onChangeDate}
+                      min={limits.min}
+                      max={limits.max}
+                    />
                     <button type="submit">Consultar</button>
                 </label>
             </form>
