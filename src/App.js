@@ -7,27 +7,28 @@ import Lateral from './components/Lateral';
 import Footer from './components/Footer';
 
 
+
 function App() {
   return (
     <BrowserRouter>
       <Navigation/>
-      <div id='principal-body'>
-        <Lateral/>
-        <div>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/Login" element={<Login />} />
-            <Route path="/Create_User" element={<Create_User />} />
-            <Route path="/servicios/salones" element={<Salone />} />
-            <Route path="/servicios/comida" element={<Comida />} />
-            <Route path="/servicios/musica" element={<Musica />} />
-            <Route path="/servicios/bartender" element={<Bartender />} />
-            <Route path="*" element={<NotFoundPage />} />
-            <Route path="/edit/:id" element={<Edit />}/>
-            <Route path="/usuarios" element={<Usuarios />}/>
-          </Routes>
+        <div id='principal-body'>
+          <Lateral/>
+          <div>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/Login" element={<Login />} />
+              <Route path="/Create_User" element={<Create_User />} />
+              <Route path="/servicios/salones" element={<Salone />} />
+              <Route path="/servicios/comida" element={<Comida />} />
+              <Route path="/servicios/musica" element={<Musica />} />
+              <Route path="/servicios/bartender" element={<Bartender />} />
+              <Route path="*" element={<NotFoundPage />} />
+              <Route path="/edit/:id" element={<Edit />}/>
+              <Route path="/usuarios" element={<Usuarios />}/>
+            </Routes>
+          </div>
         </div>
-      </div>
       <Footer/>
     </BrowserRouter>
   );

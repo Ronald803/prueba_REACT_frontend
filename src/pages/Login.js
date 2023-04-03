@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 import Cookies from 'universal-cookie';
+import LoginCorrectly from '../components/Alerts/LoginCorrectly';
+import AlgoSalioMal from '../components/Alerts/AlgoSalioMal';
 
 const baseUrl="https://backend-sistema-reservas.vercel.app/auth/login";
 const cookies = new Cookies();
@@ -42,14 +44,18 @@ export class Login extends Component {
         cookies.set('nombreusuario', respuesta.nombreusuario, {path: "/"});
         cookies.set('token',token, {path:"/"});
         cookies.set('rol',respuesta.rol, {path:"/"});
-        alert(`Bienvenido ${respuesta.nombreusuario}`);
-        window.location.href="./";
+        //alert(`Bienvenido ${respuesta.nombreusuario}`);
+        LoginCorrectly(`Que bueno saber de ti ${respuesta.nombreusuario}`)
+        setTimeout(() => {
+          window.location.href="./";  
+        }, 2000);
       
     }) 
   
     .catch(error=>{
       //console.log(error);
-      alert(`Lo sentimos. ${error.response.data.msg}`);
+      //alert(`Lo sentimos. ${error.response.data.msg}`);
+      AlgoSalioMal(`Lo sentimos. ${error.response.data.msg}`)
     })
   }
 

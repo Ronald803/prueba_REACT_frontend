@@ -21,6 +21,13 @@ const Navbar = () => {
         }
         setIsMenuClicked(!isMenuClicked)
     }
+    const cerrarSesion=()=>{
+        cookies.remove("nombreusuario",{path: "/"});
+        cookies.remove("id", {path: "/"});
+        cookies.remove("token", {path: "/"});
+        cookies.remove("rol",{path: "/"});
+        window.location.href='/Login'
+      }
 
     return(
         <div class="logo-menu">
@@ -40,7 +47,7 @@ const Navbar = () => {
                   <a href="/usuarios"><div>Usuarios</div></a>
                 }
                 { cookies.get('nombreusuario') &&
-                <button onClick={()=>this.cerrarSesion()}>Cerrar Sesión ( {cookies.get('nombreusuario')} )</button>}
+                <button onClick={()=>cerrarSesion()}>Cerrar Sesión ( {cookies.get('nombreusuario')} )</button>}
                 <hr/>
                 <a href="/servicios/salones"><div class="flotar">Salones</div></a>
                 <a href="/servicios/comida"><div class="flotar">Comida</div></a>

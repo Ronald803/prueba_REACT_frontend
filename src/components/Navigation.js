@@ -17,7 +17,7 @@ export default class Navigation extends Component {
       <div class="barra-superior">
       <header>
           <NavBar/>
-          <em>Eventos Gran Poder</em>
+          <em><a href="/">Eventos Gran Poder</a></em>
           <ul class="header-navegacion">
               <a href="/"><li>Inicio</li></a>
               <a href="/login"><li>Iniciar Sesión</li></a>

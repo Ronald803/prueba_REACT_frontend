@@ -20,6 +20,7 @@ export default class Date_finder extends Component {
   onChangeDate = (e) => {
     //console.log({minDate});
     console.log("Reservation Date",e.target.value);
+    console.log({limits});
     //console.log({minDate});
     //console.log({todayDate});
     this.setState({

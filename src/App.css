@@ -4,7 +4,7 @@
 #principal-body{
   display: grid;
   grid-template-columns: 15% 85%;
-  max-width: 1500px;
+  max-width: 1400px;
   margin: 0px auto;
 }
 .barra-superior{
@@ -169,7 +169,7 @@ li{
   margin-bottom: 10px;
 }
 .contenedor-fecha-disponibilidad{
-  background-color: #464445;
+  background-color: plum;
   margin-bottom: 10px;
 }
 .contenedor-solicitud-reserva{

@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 import Cookies from 'universal-cookie';
+import AlgoSalioMal from './Alerts/AlgoSalioMal';
+import LoginCorrectly from './Alerts/LoginCorrectly';
 
 const cookies = new Cookies();
 
@@ -44,11 +46,13 @@ export class Request extends Component {
       .then(response => {
         //console.log(response.data);
         //console.log(response.data.msg);
-        alert('Reserva realizada');
+        //alert('Reserva realizada');
+        LoginCorrectly('Reserva realizada')
         return response.data;
       })
       .catch(error => {
-        alert(`Lo sentimos. ${error.response.data.msg}`);
+        //alert(`Lo sentimos. ${error.response.data.msg}`);
+        AlgoSalioMal(`Lo sentimos. ${error.response.data.msg}`)
       })
       window.location.href=window.location.href;
   }

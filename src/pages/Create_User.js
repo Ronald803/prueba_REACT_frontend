@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Cookies from 'universal-cookie';
+import LoginCorrectly from '../components/Alerts/LoginCorrectly';
+import AlgoSalioMal from '../components/Alerts/AlgoSalioMal';
 
 const baseUrl="https://backend-sistema-reservas.vercel.app/usuarios";
 const cookies = new Cookies();
@@ -35,7 +37,7 @@ export class Create_User extends Component {
                                 rol:            "usuario"
                               })
     .then(response=>{
-      console.log(response.data);  
+      //console.log(response.data);  
       return response.data;
     })
     .then(response=>{
@@ -46,13 +48,18 @@ export class Create_User extends Component {
        cookies.set('nombreusuario', respuesta.nombreusuario, {path: "/"});
        cookies.set('token',token);
        cookies.set('rol',respuesta.rol);
-        alert(`Bienvenido ${respuesta.nombreusuario}, tu datos fueron registrados correctamente`);
-        window.location.href="./";
+        //alert(`Bienvenido ${respuesta.nombreusuario}, tu datos fueron registrados correctamente`);
+        //window.location.href="./";
+        LoginCorrectly(`${respuesta.nombreusuario}, tu datos fueron registrados correctamente`)
+        setTimeout(() => {
+          window.location.href="./";  
+        }, 3000);
     }) 
   
     .catch(error=>{
       console.log(error);
-      alert(`Lo sentimos. ${error.response.data.msg}`);
+      //alert(`Lo sentimos. ${error.response.data.msg}`);
+      AlgoSalioMal(`Lo sentimos. ${error.response.data.msg}`)
     })
   }
 
