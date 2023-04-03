@@ -18,7 +18,7 @@ const Instructions = () => {
       '<b>Primer Paso. </b>' +
       'Verifíca la disponibilidad del servicio en el cuadro rosa, introduce la fecha requerida y presiona el botón "Consultar".' +
       '<br/>'+
-      '<img src="../../img/disponibilidad.png" alt="Imagen del cuadro de disponibilidad" />'+
+      '<img src="../../img/availability.png" alt="Imagen del cuadro de disponibilidad" />'+
       '<br/>'+      
       '<b>Segundo Paso. </b>' +
       'Elige los detalles del servicio para una cotización precisa.'+
