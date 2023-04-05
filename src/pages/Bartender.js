@@ -12,7 +12,7 @@ export class Bartender extends Component {
     garzones: '',
   }
   componentDidMount() {
-    Instructions()
+    //Instructions()
   }
   cantidadBartenders = e => {
     this.setState({

@@ -13,7 +13,7 @@ export class Musica extends Component {
     }
   }
   componentDidMount() {
-    Instructions()
+    //Instructions()
   }
   precioSalon = async (e, f) => {
     cookies.set('precio', e, { path: "/" });

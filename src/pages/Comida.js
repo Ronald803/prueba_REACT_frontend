@@ -15,7 +15,7 @@ export class Comida extends Component {
     invitados: '',
   }
   componentDidMount() {
-    Instructions()
+    //Instructions()
   }
   precioPlatoComida = async (e, f) => {
     cookies.set('plato', f, { path: "/" })
