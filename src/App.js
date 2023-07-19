@@ -5,6 +5,9 @@ import Navigation from './components/Navigation';
 import { Bartender, Comida, Home, Login, Create_User, Musica, NotFoundPage, Salone, Edit, Usuarios } from './pages/index';
 import Lateral from './components/Lateral';
 import Footer from './components/Footer';
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
+import CreateUserPage from './pages/CreateUserPage';
 
 
 
@@ -16,8 +19,9 @@ function App() {
           <Lateral/>
           <div>
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/Login" element={<Login />} />
+              <Route path='/' element={<HomePage/>}/>                     {/* <Route path="/" element={<Home />} /> */}
+              <Route path='/Login' element={<LoginPage/>} />              {/* <Route path="/Login" element={<Login />} /> */}
+              <Route path='/crear-usuario' element={<CreateUserPage/>} /> 
               <Route path="/Create_User" element={<Create_User />} />
               <Route path="/servicios/salones" element={<Salone />} />
               <Route path="/servicios/comida" element={<Comida />} />
