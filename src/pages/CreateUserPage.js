@@ -25,23 +25,17 @@ function CreateUserPage() {
                                     rol:            "usuario"
                                   })
         .then(response=>{
-          //console.log(response.data);  
-          return response.data;
-        })
-        .then(response=>{
-            var respuesta=response.usuario;
-            var token=response.token;
-            var rol=response.rol;
-            cookies.set('id', respuesta.uid, {path: "/"});
-            cookies.set('nombreusuario', respuesta.nombreusuario, {path: "/"});
-            cookies.set('token',token);
-            cookies.set('rol',respuesta.rol);
-            //alert(`Bienvenido ${respuesta.nombreusuario}, tu datos fueron registrados correctamente`);
-            //window.location.href="./";
-            LoginCorrectly(`${respuesta.nombreusuario}, tu datos fueron registrados correctamente`)
-            setTimeout(() => {
-              window.location.href="./";  
-            }, 3000);
+          cookies.set('id', response.data.usuario.uid, {path: "/"});                        // ----------------- cookies -----------------                            
+          cookies.set('nombreusuario', response.data.usuario.nombreusuario, {path: "/"});   // ----------------- cookies -----------------                     
+          cookies.set('token',response.data.token);                                         // ----------------- cookies -----------------                           
+          cookies.set('rol',response.data.usuario.rol);                                                     
+          sessionStorage.setItem('user',response.data.usuario.nombreusuario); 
+          sessionStorage.setItem('rol',response.data.usuario.rol);            
+          sessionStorage.setItem('token',response.data.token);                
+          LoginCorrectly(`${response.data.usuario.nombreusuario}, tu datos fueron registrados correctamente`)
+          setTimeout(() => {
+            window.location.href="./";  
+          }, 3000);
         })       
         .catch(error=>{
             console.log(error);
