@@ -40,31 +40,60 @@ function LoginPage() {
             AlgoSalioMal(`Lo sentimos. ${error.response.data.msg}`)
         })
       }
-    return (
-        <div class="contenedor-secundario">
-        <div class="contenedor-derecho">
-          <label>Correo Electrónico:</label>
-          <br/>
-            <input 
-              type="text"
-              name="username"
-              onChange={(e)=>handleChange(e)}
-            />
-          <br/>
-          <br/>
-          <label>Contraseña: </label>
-          <br/>
-              <input
-              type="password"
-              name='password'
-              onChange={(e)=>handleChange(e)}
-            />
-          <br/>
-          <button class="resultado-botones" onClick={()=> iniciarSesion()} >Iniciar Sesión</button>
-          <button class="resultado-botones" onClick={()=> CrearUsuario()} >Crear Usuario</button>
-        </div>  
+return (
+<div className='card bg-primary' style={{"maxWidth":"400px","margin":"auto"}}>
+  <div className='card-body'>
+    <form className=''>
+      <div className="mb-3">
+        <label htmlFor="exampleInputEmail1" class="form-label">Correo Electrónico</label>
+        <input 
+          type="email" 
+          className="form-control" 
+          id="exampleInputEmail1" 
+          aria-describedby="emailHelp" 
+          name="username" 
+          onChange={(e)=>{handleChange(e)}}
+        />
       </div>
-    )
+      <div className="mb-3">
+        <label htmlFor="exampleInputPassword1" className="form-label">Contraseña</label>
+        <input 
+          type="password" 
+          className="form-control" 
+          id="exampleInputPassword1" 
+          name='password'  
+          onChange={(e)=>handleChange(e)}
+        />
+      </div>
+      <button onClick={()=>iniciarSesion()} className="btn btn-primary">Iniciar Sesión</button>
+    </form>      
+  </div>
+</div> 
+  )
 }
 
 export default LoginPage
+
+// <div class="contenedor-secundario">
+      //   <div class="contenedor-derecho">
+      //     <label>Correo Electrónico:</label>
+      //     <br/>
+      //       <input 
+      //         type="text"
+      //         name="username"
+      //         onChange={(e)=>handleChange(e)}
+      //       />
+      //     <br/>
+      //     <br/>
+      //     <label>Contraseña: </label>
+      //     <br/>
+      //         <input
+      //         type="password"
+      //         name='password'
+      //         onChange={(e)=>handleChange(e)}
+      //       />
+      //     <br/>
+      //     <button class="resultado-botones" onClick={()=> iniciarSesion()} >Iniciar Sesión</button>
+      //     <button class="resultado-botones" onClick={()=> CrearUsuario()} >Crear Usuario</button>
+      //   </div>
+      // </div>

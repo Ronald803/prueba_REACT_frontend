@@ -19,8 +19,8 @@ function App() {
   return (
     <BrowserRouter>
       <Navigation/>
-        <div id='principal-body'>
-          <Lateral/>
+        <div id='' className='justify-content-center align-items-center' >
+          {/* <Lateral/> */}
           <div>
             <Routes>
               <Route path='/' element={<HomePage/>}/>                           {/* <Route path="/" element={<Home />} /> */}

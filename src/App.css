@@ -1,3 +1,24 @@
+div.scrollmenu {
+  background-color: white;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+div.scrollmenu div {
+  min-width: 180px;
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 4px;
+  text-decoration: none;
+}
+
+div.scrollmenu div:hover {
+  background-color: #777;
+}
+
+
+
 *{
   font-family: 'Roboto', sans-serif;
 }
