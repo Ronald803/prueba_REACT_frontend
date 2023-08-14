@@ -5,7 +5,7 @@ const cookies = new Cookies();
 export default class Footer extends Component {
    render() {
     return (
-        <footer>
+        <footer className='bg-danger text-white text-center'>
             <div>C. Ricardo Bustamante #867 Z. Gran Poder</div>
             <div>Telefono +591 2 491926</div>
             <div>Celular +591 74582356</div>

@@ -5,55 +5,58 @@ function HomePage() {
   return (
   <div>
     <Welcome/>
-    <div>
+    <div className='position-relative'>
       <img src="../img/salonPortada.jpg" className="card-img-top" alt="Fotografía Portada"/>
-    </div>
-    <div>
-      <div className='text-center pt-1'>
-        <h4>Servicio Salones</h4>
-      </div>
-      <div className="scrollmenu pb-2">
-        <div className="col-3 ">
-          <div className='card card-block'>
-            <a href='/servicios/salones' className=''>
-              <img src="../img/salongolden.jpg" className="card-img-top" alt="Fotografía del Salón Golden"/>
-              <p className='mt-1 card-text text-dark'>Salón Golden</p>
-            </a>
-          </div>
+      <div className='text-center position-absolute top-50 mt-4' style={{"width":"100%"}}>
+        <div className='bg-danger bg-opacity-75 mt-1 pt-2 pb-1'>
+          <h3 className='text-white'>¡Tu acontecimiento será inolvidable!</h3>
         </div>
-        <div className="col-3 " >
-            <div className='card card-block'>
-              <a href='/servicios/salones'>
-                <img src="../img/salonplatinum.jpg" className="card-img-top" alt="Fotografía del Salón Platinum"/>
-                <p className="mt-1 card-text text-dark">Salón Platinum</p>
-              </a>
-            </div>          
-          </div>
-          <div className="col-3 " >
-            <div className='card card-block'>
-              <a href='/servicios/salones'>
-                <img src="../img/salongolden.jpg" className="card-img-top" alt="Fotografía del Salón Golden"/>
-                <p className="mt-1 card-text text-dark">Salón Golden</p>
-              </a>
-            </div>
-          </div>
-          <div className="col-3 " >
-            <div className='card card-block'>
-              <a href='/servicios/salones'>
-                <img src="../img/salonplatinum.jpg" className="card-img-top" alt="Fotografía del Salón Platinum"/>
-                <p className="mt-1 card-text text-dark">Salón Platinum</p>
-              </a>
-            </div>
-          </div>
-      </div>      
+      </div>
     </div>
-    
+      <div className='ms-auto me-auto border border-danger border-4 border-top-0 border-bottom-0' style={{"maxWidth":"1000px"}}>
+        <div className='pt-2'>
+          <div className='text-center pt-1 text-white bg-danger bg-opacity-75 ms-auto me-auto rounded-pill' style={{"width":"300px"}}>
+            <h4>Servicio Salones</h4>
+          </div>
+          <div className="scrollmenu pb-2">
+            <div className="col-3 ">
+              <div className='card card-block'>
+                <a href='/servicios/salones' className=''>
+                  <img src="../img/salongolden.jpg" className="card-img-top" alt="Fotografía del Salón Golden"/>
+                  <p className='mt-1 card-text text-dark'>Salón Golden</p>
+                </a>
+              </div>
+            </div>
+            <div className="col-3 " >
+                <div className='card card-block'>
+                  <a href='/servicios/salones'>
+                    <img src="../img/salonplatinum.jpg" className="card-img-top" alt="Fotografía del Salón Platinum"/>
+                    <p className="mt-1 card-text text-dark">Salón Platinum</p>
+                  </a>
+                </div>          
+              </div>
+              <div className="col-3 " >
+                <div className='card card-block'>
+                  <a href='/servicios/salones'>
+                    <img src="../img/salongolden.jpg" className="card-img-top" alt="Fotografía del Salón Golden"/>
+                    <p className="mt-1 card-text text-dark">Salón Golden</p>
+                  </a>
+                </div>
+              </div>
+              <div className="col-3 " >
+                <div className='card card-block'>
+                  <a href='/servicios/salones'>
+                    <img src="../img/salonplatinum.jpg" className="card-img-top" alt="Fotografía del Salón Platinum"/>
+                    <p className="mt-1 card-text text-dark">Salón Platinum</p>
+                  </a>
+                </div>
+              </div>
+          </div>      
+        </div>
 
-<div>
 
-</div>
-    <div>
-      <div className='text-center pt-1'>
+        <div>
+        <div className='text-center pt-1 text-white bg-danger bg-opacity-75 ms-auto me-auto rounded-pill' style={{"width":"300px"}}>
         <h4>Servicio Comida</h4>
       </div>
       <div className="scrollmenu pb-2">
@@ -90,14 +93,11 @@ function HomePage() {
             </div>          
         </div>
       </div>      
-    </div>
+        </div>
 
 
-<div>
-
-</div>
-    <div>
-      <div className='text-center pt-1'>
+        <div>
+        <div className='text-center pt-1 text-white bg-danger bg-opacity-75 ms-auto me-auto rounded-pill' style={{"width":"300px"}}>
         <h4>Servicio Musica</h4>
       </div>
       <div className="scrollmenu pb-2">
@@ -134,14 +134,11 @@ function HomePage() {
             </div>          
         </div>
       </div>      
-    </div>
+        </div>
 
 
-<div>
-
-</div>
-    <div>
-      <div className='text-center pt-1'>
+        <div>
+        <div className='text-center pt-1 text-white bg-danger bg-opacity-75 ms-auto me-auto rounded-pill' style={{"width":"300px"}}>
         <h4>Servicio Bartender</h4>
       </div>
       <div className="scrollmenu pb-2">
@@ -164,7 +161,7 @@ function HomePage() {
         <div className="col-3 ">
           <div className='card card-block'>
             <a href='/servicios/bartender' className=''>
-              <img src="../img/barman1.jpg" className="card-img-top" alt="Fotografía de Barman trabajando"/>
+              <img src="../img/barman3.jpg" className="card-img-top" alt="Fotografía de Barman trabajando"/>
               <p className='mt-1 card-text text-dark'>Barman</p>
             </a>
           </div>
@@ -178,7 +175,10 @@ function HomePage() {
             </div>          
         </div>
       </div>      
-    </div>
+        </div>
+      </div>
+    
+    
 
   </div>    
   )
