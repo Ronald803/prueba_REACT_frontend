@@ -18,15 +18,15 @@ div.scrollmenu div:hover {
 
 
 
-*{
+/* *{
   font-family: 'Roboto', sans-serif;
-}
+} 
 #principal-body{
   display: grid;
   grid-template-columns: 15% 85%;
   max-width: 1400px;
   margin: 0px auto;
-}
+} 
 .barra-superior{
   background-color: black;
   align-self: center;

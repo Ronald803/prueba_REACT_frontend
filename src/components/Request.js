@@ -44,24 +44,47 @@ export class Request extends Component {
                               }
                             , { headers: { "x-token": cookies.get('token') } })
       .then(response => {
-        //console.log(response.data);
-        //console.log(response.data.msg);
-        //alert('Reserva realizada');
         LoginCorrectly('Reserva realizada')
-        //return response.data;
       })
       .catch(error => {
-        //alert(`Lo sentimos. ${error.response.data.msg}`);
         AlgoSalioMal(`Lo sentimos. ${error.response.data.msg}`)
       })
-      //window.location.href=window.location.href;
   }
 
   render() {
     return (
-      <div class="contenedor-derecho contenedor-solicitud-reserva">
-        <div class="form-selector-fecha" onSubmit={this.onSubmit}>
-          <label>
+      <div class="px-2" onSubmit={this.onSubmit}>
+        <div className="input-group mb-3">
+          <span className="input-group-text" style={{"minWidth":"85px"}}>Evento</span>
+          <input 
+            type="text" 
+            className="form-control text-center" 
+            placeholder='Ejemplo: "Fiesta de Graduación"'
+            onChange={this.handleChange}
+          />
+          { this.props.children!="salones" &&
+            <div>            
+              <label>Salón:</label>
+              <select name="salon" id="cursos"   onChange={this.handleChange}>
+                <option value="">Elige una opción</option>
+                <option value="golden">Golden</option>
+                <option value="platinum">Platinum</option>
+                <option value="otro">Otro</option>
+              </select>
+              <br />
+            </div>
+          }
+        </div>
+        <div className='text-center'>
+          <button onClick={() => this.registrarse()} className='btn btn-danger' >Reservar</button>  
+        </div>
+      </div>
+      
+    )
+  }
+}
+
+{/* <label>
             <span>Nombre de tu evento: </span>
             <input type="text" name="event" onChange={this.handleChange}/>
             { this.props.children!="salones" &&
@@ -77,9 +100,4 @@ export class Request extends Component {
               </div>
             }
             <button onClick={() => this.registrarse()} >Reservar</button>
-          </label>
-        </div>
-      </div>
-    )
-  }
-}
+          </label> */}
