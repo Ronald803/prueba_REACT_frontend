@@ -107,7 +107,8 @@ export default class Date_finder extends Component {
                 </div>
             }
         </div>
-        <div>
+        
+        {/* <div>
           {this.state.users.map(user =>(
             <div key={user._id}>  
               { cookies.get('rol')=="ADMINISTRADOR" ? 
@@ -169,7 +170,7 @@ export default class Date_finder extends Component {
               )
             )
           }
-        </div>
+        </div> */}
       </div>
     )
   }

@@ -19,7 +19,7 @@ function LoginPage() {
       }
     const CrearUsuario=()=>{ window.location.href='/Create_user' }
     const iniciarSesion= async(e)=>{
-        await axios.post(baseUrl, {correo: "pepepalotes@test.com", contraseña: "123456"})
+        await axios.post(baseUrl, {correo: form.username, contraseña: form.password})
         .then(response=>{
             var respuesta=response.data.usuario;
             var token=response.data.token;
