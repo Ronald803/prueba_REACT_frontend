@@ -43,8 +43,74 @@ function CreateUserPage() {
             AlgoSalioMal(`Lo sentimos. ${error.response.data.msg}`)
         })
     }
-    return (
-    <div class="contenedor-secundario">
+  return (
+    <div className=' py-4'>
+    <div className='card border border-dark bg-dark bg-opacity-75' style={{"maxWidth":"400px","margin":"auto"}}>
+      <div className='card-body'>
+        <div className='my-3'>
+          <div className="mb-3">
+            <div className='text-center text-white'>
+              <label htmlFor="exampleInputEmail1" className="form-label">Nombre de Usuario</label>
+            </div>
+            <input 
+              type="text" 
+              className="form-control border-black" 
+              id="exampleInputEmail1" 
+              aria-describedby="emailHelp" 
+              name="username" 
+              onChange={(e)=>{handleChange(e)}}
+            />
+          </div>
+          <div className="mb-3">
+            <div className='text-center text-white'>
+              <label htmlFor="exampleInputPassword1" className="form-label">Correo Electrónico</label>
+            </div>
+            <input 
+              type="email" 
+              className="form-control border-black" 
+              id="exampleInputPassword1" 
+              name='email'  
+              onChange={(e)=>handleChange(e)}
+            />
+          </div>
+          <div className="mb-3">
+            <div className='text-center text-white'>
+              <label htmlFor="exampleInputPassword1" className="form-label">Celular</label>
+            </div>
+            <input 
+              type="text" 
+              className="form-control border-black" 
+              id="exampleInputPassword1" 
+              name='cellphone'  
+              onChange={(e)=>handleChange(e)}
+            />
+          </div>
+          <div className="mb-3">
+            <div className='text-center text-white'>
+              <label htmlFor="exampleInputPassword1" className="form-label">Contraseña</label>
+            </div>
+            <input 
+              type="password" 
+              className="form-control border-black" 
+              id="exampleInputPassword1" 
+              name='password'  
+              onChange={(e)=>handleChange(e)}
+            />
+          </div>
+
+          <div className='text-center'>
+            <button onClick={()=> registrarse()} className="btn btn-danger">Registrarse</button>
+          </div>
+        </div>      
+      </div>
+    </div>
+    </div>   
+  )
+}
+
+export default CreateUserPage
+
+{/* <div class="contenedor-secundario">
         <div class="contenedor-derecho">
             <label>Nombre Usuario:</label>
             <br/>
@@ -85,8 +151,4 @@ function CreateUserPage() {
             <br/>
             <button class="resultado-botones" onClick={()=> registrarse()} >Registrarse</button>
         </div>
-    </div>
-  )
-}
-
-export default CreateUserPage
+    </div> */}

@@ -18,8 +18,8 @@ function LoginPage() {
         })
       }
     const CrearUsuario=()=>{ window.location.href='/Create_user' }
-    const iniciarSesion= async()=>{
-        await axios.post(baseUrl, {correo: form.username, contraseña: form.password})
+    const iniciarSesion= async(e)=>{
+        await axios.post(baseUrl, {correo: "pepepalotes@test.com", contraseña: "123456"})
         .then(response=>{
             var respuesta=response.data.usuario;
             var token=response.data.token;
@@ -37,15 +37,57 @@ function LoginPage() {
             }, 2000);          
         })       
         .catch(error=>{
-            AlgoSalioMal(`Lo sentimos. ${error.response.data.msg}`)
+            //AlgoSalioMal(`Lo sentimos. ${error.response.data.msg}`)
         })
       }
 return (
-<div className='card bg-primary' style={{"maxWidth":"400px","margin":"auto"}}>
+<div className=' py-4'>
+<div className='card border border-dark bg-dark bg-opacity-75' style={{"maxWidth":"400px","margin":"auto"}}>
   <div className='card-body'>
-    <form className=''>
+    <div className='my-3'>
       <div className="mb-3">
-        <label htmlFor="exampleInputEmail1" class="form-label">Correo Electrónico</label>
+        <div className='text-center text-white'>
+          <label htmlFor="exampleInputEmail1" className="form-label">Correo Electrónico</label>
+        </div>
+        <input 
+          type="email" 
+          className="form-control border-black" 
+          id="exampleInputEmail1" 
+          aria-describedby="emailHelp" 
+          name="username" 
+          onChange={(e)=>{handleChange(e)}}
+        />
+      </div>
+      <div className="mb-3">
+        <div className='text-center text-white'>
+          <label htmlFor="exampleInputPassword1" className="form-label">Contraseña</label>
+        </div>
+        <input 
+          type="password" 
+          className="form-control border-black" 
+          id="exampleInputPassword1" 
+          name='password'  
+          onChange={(e)=>handleChange(e)}
+        />
+      </div>
+      <div className='text-center'>
+        <button onClick={()=>iniciarSesion()} className="btn btn-danger">Iniciar Sesión</button>
+      </div>
+    </div>      
+  </div>
+</div>
+</div> 
+  )
+}
+
+export default LoginPage
+
+
+{/* <div className='card bg-primary' style={{"maxWidth":"400px","margin":"auto"}}>
+  <div className='card-body'>
+    <div className=''>
+      <div className="mb-3">
+        <label htmlFor="exampleInputEmail1" class="form-label">Correo Electrónicossssssss</label>
         <input 
           type="email" 
           className="form-control" 
@@ -66,13 +108,15 @@ return (
         />
       </div>
       <button onClick={()=>iniciarSesion()} className="btn btn-primary">Iniciar Sesión</button>
-    </form>      
+    </div>      
   </div>
-</div> 
-  )
-}
+</div>  */}
 
-export default LoginPage
+
+
+
+
+
 
 // <div class="contenedor-secundario">
       //   <div class="contenedor-derecho">

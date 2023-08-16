@@ -17,20 +17,19 @@ function SalonePage() {
         })
     }
 return (
-    <div>
     <div className='row'>
-      <div className='col-sm-4 ps-4'>
-        <Date_finder>salones</Date_finder>
+      <div className='col-sm-4 ps-4 pt-2'>
         <div className='card '>
           <div>
             <div className='card-header bg-black text-white text-center'>Detalles de Reserva</div>
+            <Date_finder>salones</Date_finder>
             <div className='px-2 pt-3'>
               <div class="input-group mb-3">
-                <span class="input-group-text" style={{"minWidth":"85px"}} >Salón</span>
+                <span class="input-group-text" style={{"minWidth":"90px"}} >Salón</span>
                 <input type="text" className="form-control text-center" placeholder={form.salon} disabled/>
               </div>
               <div class="input-group mb-3">
-                <span class="input-group-text" style={{"minWidth":"85px"}}>Precio</span>
+                <span class="input-group-text" style={{"minWidth":"90px"}}>Precio</span>
                 <input type="text" className="form-control text-center" placeholder={"Bs. "+ form.precio} disabled/>
               </div>
             </div>
@@ -38,7 +37,7 @@ return (
           <Request>salones</Request>
         </div>
       </div>
-      <div className='col-sm-8 border-start border-danger border-3 ps-4'>
+      <div className='col-sm-8 border-start border-danger border-3 ps-4 py-2'>
         <div className="card mb-3 rounded-4" onClick={(() => precioSalon(7000, "golden"))}>
           <div className="row g-0">
             <div className="col-md-6">
@@ -76,7 +75,6 @@ return (
           </div>
         </div>
       </div>
-    </div>
     </div>
   )
 }

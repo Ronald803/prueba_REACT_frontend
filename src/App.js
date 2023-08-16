@@ -12,6 +12,7 @@ import SalonePage from './pages/SalonePage';
 import ComidaPage from './pages/ComidaPage';
 import MusicaPage from './pages/MusicaPage';
 import BartenderPage from './pages/BartenderPage';
+import Login_CreateUser from './pages/Login_CreateUser';
 
 
 
@@ -24,8 +25,8 @@ function App() {
           <div>
             <Routes>
               <Route path='/' element={<HomePage/>}/>                           {/* <Route path="/" element={<Home />} /> */}
-              <Route path='/Login' element={<LoginPage/>} />                    {/* <Route path="/Login" element={<Login />} /> */}
-              <Route path='/Create_User' element={<CreateUserPage/>} />         {/* <Route path="/Create_User" element={<Create_User />} /> */}
+              <Route path='/Login' element={<Login_CreateUser/>} />                    {/* <Route path="/Login" element={<Login />} /> */}
+              <Route path='/Create_User' element={<Login_CreateUser/>} />         {/* <Route path="/Create_User" element={<Create_User />} /> */}
               <Route path='/servicios/salones' element={<SalonePage/>} />       {/* <Route path="/servicios/salones" element={<Salone />} /> */}
               <Route path='/servicios/comida' element={<ComidaPage/>} />        {/* <Route path="/servicios/comida" element={<Comida />} /> */}
               <Route path='/servicios/musica' element={<MusicaPage/>} />        {/* <Route path="/servicios/musica" element={<Musica />} /> */}

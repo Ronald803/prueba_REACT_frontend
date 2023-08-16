@@ -14,14 +14,14 @@ export default class Navigation extends Component {
   }
   render() {
   return (
-    <nav class="navbar navbar-expand-lg bg-danger " style={{"height":"70px"}}>
+    <nav class="navbar navbar-expand-lg bg-danger" style={{"height":"70px","zIndex":"100"}}>
       <div class="container-fluid ">
         <a class="navbar-brand text-white" href="/">Eventos Gran Poder</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end text-white" id="navbarNav">
-          <ul class="navbar-nav">
+          <ul class="navbar-nav bg-danger text-end pe-4">
             <li class="nav-item">
               <a class="nav-link active text-white " aria-current="page" href="/servicios/salones">Salones</a>
             </li>

@@ -16,8 +16,13 @@ div.scrollmenu div:hover {
   background-color: #ad5e5e;
 }
 
+.contenedor {
+  background-image: url('/public/img/imgSalon.jpeg');
+  background-size: cover; /* Ajusta la imagen al tamaño del contenedor */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+}
 
-
+/* 
 /* *{
   font-family: 'Roboto', sans-serif;
 } 
@@ -257,7 +262,7 @@ hr{margin: 0;}
   color: white;
   font-size: 1.1rem;
   text-align: center;
-} */
+} */ */
 @media (max-width: 1210px){
   #principal-body{display: block;}
   .barra-nav-lateral{

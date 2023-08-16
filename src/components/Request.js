@@ -54,18 +54,19 @@ export class Request extends Component {
   render() {
     return (
       <div class="px-2" onSubmit={this.onSubmit}>
-        <div className="input-group mb-3">
-          <span className="input-group-text" style={{"minWidth":"85px"}}>Evento</span>
+        <div className="input-group mb-2">
+          <span className="input-group-text" style={{"minWidth":"90px"}}>Evento</span>
           <input 
             type="text" 
             className="form-control text-center" 
-            placeholder='Ejemplo: "Fiesta de Graduación"'
+            placeholder='Ej. "Fiesta de Graduación"'
             onChange={this.handleChange}
+            name="event"
           />
           { this.props.children!="salones" &&
-            <div>            
-              <label>Salón:</label>
-              <select name="salon" id="cursos"   onChange={this.handleChange}>
+            <div className='input-group mt-3'>            
+              <label className='input-group-text' style={{"minWidth":"90px"}}>Salón:</label>
+              <select className='form-control ' name="salon" id="cursos"   onChange={this.handleChange}>
                 <option value="">Elige una opción</option>
                 <option value="golden">Golden</option>
                 <option value="platinum">Platinum</option>
@@ -75,7 +76,7 @@ export class Request extends Component {
             </div>
           }
         </div>
-        <div className='text-center'>
+        <div className='text-center mb-2'>
           <button onClick={() => this.registrarse()} className='btn btn-danger' >Reservar</button>  
         </div>
       </div>
