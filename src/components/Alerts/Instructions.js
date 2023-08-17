@@ -16,7 +16,7 @@ const Instructions = () => {
     html:
       `${mensaje}`+
       '<b>Primer Paso. </b>' +
-      'Verifíca la disponibilidad del servicio en el cuadro rosa, introduce la fecha requerida y presiona el botón "Consultar".' +
+      'Verifíca la disponibilidad del servicio en la parte superior izquierda, introduce la fecha requerida y presiona el botón verde "Consultar Disponibilidad".' +
       '<br/>'+
       '<img src="../../img/availability.png" alt="Imagen del cuadro de disponibilidad" />'+
       '<br/>'+      
@@ -24,7 +24,7 @@ const Instructions = () => {
       'Elige los detalles del servicio para una cotización precisa.'+
       '<br/>'+
       '<b>Tercero Paso. </b>' +
-      'Ingresa el nombre de tu evento y realiza la reserva en el cuadro verde claro.'+
+      'Ingresa el nombre de tu evento y realiza la reserva presionando el botón rojo "Reservar".'+
       '<br/>'+
       '<img src="../../img/reservar.png" alt="Imagen del cuadro de reservar" />',
     footer: 'No olvides que debes iniciar sesión para reservar (Tercer Paso)',

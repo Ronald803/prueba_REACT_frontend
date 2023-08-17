@@ -84,7 +84,7 @@ export default class Date_finder extends Component {
           <button onClick={this.onSubmit} className='btn btn-success'>Consultar Disponibilidad</button>
         </div>
         
-        <div class="contenedor-derecho contenedor-fecha-disponibilidad">
+        <div>
             { this.state.respuesta &&
                 <div className='text-center mt-2'>
                 {this.state.respuesta === true && <div className=' bg-primary text-white'><p>{disponibilidad}</p></div>}
@@ -113,7 +113,7 @@ export default class Date_finder extends Component {
                   </div>
                 }
                 {disponible.Jambao !== "" && 
-                  <div className='bg-danger text-white row'>
+                  <div className='bg-danger text-white row mx-2'>
                     <p className='pt-2 col-md-10'>Grupo Jambao: {disponible.Jambao}</p>
                     <button className='col-md-2 btn btn-success'>Info</button>
                   </div>
@@ -122,38 +122,65 @@ export default class Date_finder extends Component {
             }
         </div>
         
-        <div className='card'>
+        <div className='card mt-2'>
           {this.state.users.map(user =>(
             <div className='card-body' key={user._id}>  
               { cookies.get('rol')=="ADMINISTRADOR" ? 
                   <div class="resultado-tarjeta">
                     <h5 className='card-title text-center'>{user.evento}</h5>
-                    
-                      <p className='card-text'>Salón: {user.salon}</p>
-                      <p className='card-text'>Fecha: {user.fecha}</p>
-                      <p className='card-text'>Servicio: {user.servicio}</p>
+                    <div class="input-group ">
+                      <span class="input-group-text" style={{"minWidth":"110px"}} >Salón</span>
+                      <input type="text" className="form-control text-center" placeholder={user.salon} disabled/>
+                    </div>
+                    <div class="input-group ">
+                      <span class="input-group-text" style={{"minWidth":"110px"}} >Fecha</span>
+                      <input type="text" className="form-control text-center" placeholder={user.fecha} disabled/>
+                    </div>
+                    <div class="input-group ">
+                      <span class="input-group-text" style={{"minWidth":"110px"}} >Servicio</span>
+                      <input type="text" className="form-control text-center" placeholder={user.servicio} disabled/>
+                    </div>
                       {this.props.children=="bartender" &&
                         <div>
-                          <p>Bartenders: {user.bartenderpro}</p>
-                          <p>Garzones: {user.garzones}</p>
+                          <div class="input-group ">
+                            <span class="input-group-text" style={{"minWidth":"110px"}} >Bartenders</span>
+                            <input type="text" className="form-control text-center" placeholder={user.bartenderpro} disabled/>
+                          </div>
+                          <div class="input-group ">
+                            <span class="input-group-text" style={{"minWidth":"110px"}} >Garzones</span>
+                            <input type="text" className="form-control text-center" placeholder={user.garzones} disabled/>
+                          </div>
                         </div>
-                        }
+                      }
                       {this.props.children=="musica" &&
-                        <div>
-                          <p>Artista: {user.grupo}</p>
+                        <div class="input-group ">
+                          <span class="input-group-text" style={{"minWidth":"110px"}} >Artista</span>
+                          <input type="text" className="form-control text-center" placeholder={user.grupo} disabled/>
                         </div>
                       }
                       {this.props.children=="comida" &&
                         <div>
-                          <p>Plato: {user.plato}</p>
-                          <p>Invitados: {user.invitados}</p>
+                          <div class="input-group ">
+                            <span class="input-group-text" style={{"minWidth":"110px"}} >Plato</span>
+                            <input type="text" className="form-control text-center" placeholder={user.plato} disabled/>
+                          </div>
+                          <div class="input-group ">
+                            <span class="input-group-text" style={{"minWidth":"110px"}} >Invitados</span>
+                            <input type="text" className="form-control text-center" placeholder={user.invitados} disabled/>
+                          </div>
                         </div>
                       }
-                      <p>Precio: {user.precio}</p>
-                      <p>nombreusuario: {user.nombreusuario}</p>
+                      <div class="input-group ">
+                        <span class="input-group-text" style={{"minWidth":"110px"}} >Precio</span>
+                        <input type="text" className="form-control text-center" placeholder={user.precio} disabled/>
+                      </div>
+                      <div class="input-group ">
+                        <span class="input-group-text" style={{"minWidth":"110px"}} >Usuario</span>
+                        <input type="text" className="form-control text-center" placeholder={user.nombreusuario} disabled/>
+                      </div>
                       { user.caracteristica=='eliminado' ? 
                           <p>ELIMINADO</p>:
-                          <div class="row">
+                          <div class="row pt-2">
                             <Link class=" col btn btn-primary mx-2" to={"/edit/" + user._id}>Actualizar Reserva</Link>
                             <a class="col btn btn-danger mx-2" onClick={(() => this.deleteNote(user._id))}>Eliminar Reserva</a>
                           </div>
