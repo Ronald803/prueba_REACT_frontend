@@ -13,16 +13,12 @@ export default class Date_finder extends Component {
     respuesta: false
   }
   async componentDidMount() {
-    //console.log(this.state.users)
-    //console.log("componentdidmount")
+    
   }
 
   onChangeDate = (e) => {
-    //console.log({minDate});
     console.log("Reservation Date",e.target.value);
     console.log({limits});
-    //console.log({minDate});
-    //console.log({todayDate});
     this.setState({
       date: e.target.value
     })
@@ -32,10 +28,7 @@ export default class Date_finder extends Component {
     e.preventDefault();
     const res = await axios.get(`https://backend-sistema-reservas.vercel.app/servicios/${this.props.children}?fecha=${this.state.date}`);
     this.setState({ users: res.data });
-    //console.log(res.request.status)
-    //console.log(res)
     if(this.state.date !="" && res.request.status == 200){
-      //console.log("se hizo una petición correcta con fecha");
       this.state.respuesta = true;
     }
     cookies.set('fecha', this.state.date, { path: "/" });
@@ -43,11 +36,8 @@ export default class Date_finder extends Component {
   }
 
   deleteNote = async(id) => {
-    //console.log(id)
     await axios.delete(`https://backend-sistema-reservas.vercel.app/servicios/${this.props.children}/`+id,{ headers: { "x-token": cookies.get('token') } })
     .then(response => {
-      //console.log(response.data);
-      //console.log(response.data.msg);
       return response.data;
     })
     .catch(error => {
@@ -78,7 +68,6 @@ export default class Date_finder extends Component {
         } 
       } 
     })
-    //console.log(disponibilidad);
     return (
       <div>
         <div class="input-group my-2 px-2">
@@ -99,78 +88,101 @@ export default class Date_finder extends Component {
             { this.state.respuesta &&
                 <div className='text-center mt-2'>
                 {this.state.respuesta === true && <div className=' bg-primary text-white'><p>{disponibilidad}</p></div>}
-                {disponible.golden !== "" && <div className='bg-danger text-white'><p>Salón Golden {disponible.golden}</p></div>}
-                {disponible.platinum !== "" && <div className='bg-danger text-white'><p>Salón Platinum {disponible.platinum}</p></div>}
-                {disponible["Sabor Sabor"] !== "" && <div className='bg-danger text-white'><p>Grupo Sabor Sabor {disponible["Sabor Sabor"]}</p></div>}
-                {disponible.Kalamarka !== "" && <div className='bg-danger text-white'><p>Grupo Kalamarka: {disponible.Kalamarka}</p></div>}
-                {disponible.Jambao !== "" && <div className='bg-danger text-white'><p>Grupo Jambao: {disponible.Jambao}</p></div>}
+                {disponible.golden !== "" && 
+                  <div className='bg-danger text-white row mx-2'>
+                    <p className='pt-2 col-md-10'>Salón Golden {disponible.golden}</p>
+                    <button className='col-md-2 btn btn-success'>Info</button>
+                  </div>
+                }
+                {disponible.platinum !== "" && 
+                  <div className='bg-danger text-white row mx-2'>
+                    <p className='pt-2 col-md-10'>Salón Platinum {disponible.platinum}</p>
+                    <button className='col-md-2 btn btn-success'>Info</button>
+                  </div>
+                }
+                {disponible["Sabor Sabor"] !== "" && 
+                  <div className='bg-danger text-white row mx-2'>
+                    <p className='pt-2 col-md-10'>Grupo Sabor Sabor {disponible["Sabor Sabor"]}</p>
+                    <button className='col-md-2 btn btn-success'>Info</button>
+                  </div>
+                }
+                {disponible.Kalamarka !== "" && 
+                  <div className='bg-danger text-white row mx-2'>
+                    <p className='pt-2 col-md-10'>Grupo Kalamarka: {disponible.Kalamarka}</p>
+                    <button className='col-md-2 btn btn-success'>Info</button>
+                  </div>
+                }
+                {disponible.Jambao !== "" && 
+                  <div className='bg-danger text-white row'>
+                    <p className='pt-2 col-md-10'>Grupo Jambao: {disponible.Jambao}</p>
+                    <button className='col-md-2 btn btn-success'>Info</button>
+                  </div>
+                }
                 </div>
             }
         </div>
         
-        {/* <div>
+        <div className='card'>
           {this.state.users.map(user =>(
-            <div key={user._id}>  
+            <div className='card-body' key={user._id}>  
               { cookies.get('rol')=="ADMINISTRADOR" ? 
-                                <div class="resultado-tarjeta">
-                                  <div>
-                                    <h5>{user.evento}</h5>
-                                  </div>
-                                  <div>
-                                    <p>Salón: {user.salon}</p>
-                                    <p>Fecha: {user.fecha}</p>
-                                    <p>Servicio: {user.servicio}</p>
-                                    {this.props.children=="bartender" &&
-                                      <div>
-                                        <p>Bartenders: {user.bartenderpro}</p>
-                                        <p>Garzones: {user.garzones}</p>
-                                      </div>
-                                      }
-                                    {this.props.children=="musica" &&
-                                      <div>
-                                        <p>Artista: {user.grupo}</p>
-                                      </div>
-                                    }
-                                    {this.props.children=="comida" &&
-                                      <div>
-                                        <p>Plato: {user.plato}</p>
-                                        <p>Invitados: {user.invitados}</p>
-                                      </div>
-                                    }
-                                    <p>Precio: {user.precio}</p>
-                                    <p>nombreusuario: {user.nombreusuario}</p>
-                                    { user.caracteristica=='eliminado' ? 
-                                        <p>ELIMINADO</p>:
-                                        <div class="resultado-botones">
-                                          <Link class="link flotar" to={"/edit/" + user._id}>Actualizar Reserva</Link>
-                                          <a class="boton-eliminar flotar" onClick={(() => this.deleteNote(user._id))}>Eliminar Reserva</a>
-                                        </div>
-                                    }
-                                  </div>
-                                </div> :
-                              <div>{user.caracteristica!=='eliminado' &&
-                                    
-                                <div key={user._id}>
-                                  <p>Este es un evento que tenemos agendado para la fecha {this.state.date}:</p>
-                                  <div class="resultado-tarjeta">
-                                    <div >
-                                      <h5>Evento: {user.evento}</h5>
-                                    </div>
-                                    <div >
-                                      <p>Salón: {user.salon}</p>
-                                      {this.props.children=="musica" && <p>Artista: {user.grupo}</p>}
-                                      <p>Servicio: {user.servicio}</p>
-                                    </div>
-                                  </div>
-                                </div>
-                                          }
-                              </div>
-                            }
+                  <div class="resultado-tarjeta">
+                    <h5 className='card-title text-center'>{user.evento}</h5>
+                    
+                      <p className='card-text'>Salón: {user.salon}</p>
+                      <p className='card-text'>Fecha: {user.fecha}</p>
+                      <p className='card-text'>Servicio: {user.servicio}</p>
+                      {this.props.children=="bartender" &&
+                        <div>
+                          <p>Bartenders: {user.bartenderpro}</p>
+                          <p>Garzones: {user.garzones}</p>
+                        </div>
+                        }
+                      {this.props.children=="musica" &&
+                        <div>
+                          <p>Artista: {user.grupo}</p>
+                        </div>
+                      }
+                      {this.props.children=="comida" &&
+                        <div>
+                          <p>Plato: {user.plato}</p>
+                          <p>Invitados: {user.invitados}</p>
+                        </div>
+                      }
+                      <p>Precio: {user.precio}</p>
+                      <p>nombreusuario: {user.nombreusuario}</p>
+                      { user.caracteristica=='eliminado' ? 
+                          <p>ELIMINADO</p>:
+                          <div class="row">
+                            <Link class=" col btn btn-primary mx-2" to={"/edit/" + user._id}>Actualizar Reserva</Link>
+                            <a class="col btn btn-danger mx-2" onClick={(() => this.deleteNote(user._id))}>Eliminar Reserva</a>
+                          </div>
+                      }
+                    
+                  </div> 
+                  :
+                  <div>{user.caracteristica!=='eliminado' &&
+                    <div key={user._id}>
+                      {/* <p>Este es un evento que tenemos agendado para la fecha {this.state.date}:</p>
+                      <div class="resultado-tarjeta">
+                        <div >
+                          <h5>Evento: {user.evento}</h5>
+                        </div>
+                        <div >
+                          <p>Salón: {user.salon}</p>
+                          {this.props.children=="musica" && <p>Artista: {user.grupo}</p>}
+                          <p>Servicio: {user.servicio}</p>
+                        </div>
+                      </div> */}
+                    </div>
+                              }
+                  </div>
+                }
               </div>  
               )
             )
           }
-        </div> */}
+        </div>
       </div>
     )
   }
