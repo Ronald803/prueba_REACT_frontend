@@ -43,9 +43,14 @@ export default class Navigation extends Component {
             {
               cookies.get('rol') == 'ADMINISTRADOR'
               &&
-              <li className='nav-item'>
-                <a class="nav-link text-white" href="/usuarios">Usuarios</a>  
-              </li>
+              <div className='row'>
+                <li className='col nav-item'>
+                  <a className="nav-link text-white" href="/usuarios">Usuarios</a>  
+                </li>
+                <li className='col nav-item'>
+                  <a className='nav-link text-white' href='/servicios/reservas'>Reservas</a>
+                </li>
+              </div>
             }
             {
               cookies.get('nombreusuario') 

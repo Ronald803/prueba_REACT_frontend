@@ -44,7 +44,10 @@ const Navbar = () => {
                 <a href="/login"><div>Iniciar Sesión</div></a>
                 <a href="/Create_user"><div>Registrarse</div></a>
                 { cookies.get('rol')=="ADMINISTRADOR" &&
-                  <a href="/usuarios"><div>Usuarios</div></a>
+                  <div>
+                    <a href="/usuarios"><div>Usuarios</div></a>
+                    <a href="/servicios/reservas">Reservas</a>
+                  </div>
                 }
                 { cookies.get('nombreusuario') &&
                 <button onClick={()=>cerrarSesion()}>Cerrar Sesión ( {cookies.get('nombreusuario')} )</button>}

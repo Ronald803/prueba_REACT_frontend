@@ -13,6 +13,7 @@ import ComidaPage from './pages/ComidaPage';
 import MusicaPage from './pages/MusicaPage';
 import BartenderPage from './pages/BartenderPage';
 import Login_CreateUser from './pages/Login_CreateUser';
+import ReservasPage from './pages/ReservasPage';
 
 
 
@@ -31,6 +32,7 @@ function App() {
               <Route path='/servicios/comida' element={<ComidaPage/>} />        {/* <Route path="/servicios/comida" element={<Comida />} /> */}
               <Route path='/servicios/musica' element={<MusicaPage/>} />        {/* <Route path="/servicios/musica" element={<Musica />} /> */}
               <Route path='/servicios/bartender' element={<BartenderPage/>} />  {/* <Route path="/servicios/bartender" element={<Bartender />} /> */}
+              <Route path='/servicios/reservas' element={<ReservasPage/>} />
               <Route path="*" element={<NotFoundPage />} />
               <Route path="/edit/:id" element={<Edit />}/>
               <Route path="/usuarios" element={<Usuarios />}/>
