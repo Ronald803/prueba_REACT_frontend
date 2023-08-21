@@ -6,6 +6,7 @@ const cookies = new Cookies();
 
 function ReservasPage() {
     const [service, setService] = useState("salones")
+    let filters = {salon:"",grupo:"",plato:""}
     const [reservas, setReservas] = useState([])
     const userRol = sessionStorage.getItem('rol');
     function getAllAppointmentsToBackend(){
@@ -25,20 +26,120 @@ function ReservasPage() {
     useEffect(() => {
         getAllAppointmentsToBackend()
             .then( appointments => {
-                //console.log(appointments.data);
-                setReservas(appointments.data[0]);
+              if(service === "salones"){
+                setReservas(appointments.data[0])
+              } else {
+                setReservas(appointments.data);
+              } 
                 console.log(reservas);
             })
             .catch( e => {
                 console.log({e});
             })
-    }, [])
+    }, [service])
+    function chooseService(serv){
+      console.log(serv);
+      setService(serv);
+    }
+    function choosenFilters(e){
+      console.log(e.name);  
+      console.log(e.value);
+      filters = {
+        ...filters,
+        [e.name]: e.value
+      }
+    }
     
+    function searchReservas(){
+      console.log("AAAAAAAAAAAAAAAAAAA");
+      let reservasSinFiltrar = [];
+      let reservasFiltradas = [];
+      getAllAppointmentsToBackend()
+            .then( appointments => {
+              console.log("BBBBBBBBBBBB");
+              if(service === "salones"){
+                reservasSinFiltrar = appointments.data[0]
+              } else {
+                reservasSinFiltrar = appointments.data;
+              } 
+              console.log(reservasSinFiltrar);
+              if(filters.salon !== "" ){
+                reservasSinFiltrar.map(reserva=>{
+                  if(reserva.salon===filters.salon){reservasFiltradas.push(reserva)}
+                })
+              } else { reservasFiltradas = reservasSinFiltrar }
+              if(service === "comida" && filters.plato !== ""){
+                console.log("CCCCCCCCCCCCCCCCCCCCC");
+                reservasSinFiltrar = reservasFiltradas;
+                reservasFiltradas = [];
+                console.log(reservasSinFiltrar);
+                reservasSinFiltrar.map(reserva=>{
+                  if(filters.plato === reserva.plato){reservasFiltradas.push(reserva)}
+                })
+              }
+              if(service === "musica" && filters.grupo !== ""){
+                reservasSinFiltrar = reservasFiltradas;
+                reservasFiltradas = [];
+                reservasSinFiltrar.map(reserva=>{
+                  if(filters.grupo === reserva.grupo){reservasFiltradas.push(reserva)}
+                })
+              }
+              console.log(reservasFiltradas);
+              setReservas(reservasFiltradas)  
+            })
+            .catch( e => {
+                console.log({e});
+            })
+      
+    }
 return (
-<div className='bg-danger bg-opacity-25 contenedor'>
-    <div>
-        
+<div className=' bg-opacity-25 contenedor pt-3'>
+    <div className='bg-dark card p-3 mx-auto' style={{"maxWidth":"800px"}}>
+      <div className='row'>
+        <div className='col '>
+          <select className="form-select form-select-lg mb-1" aria-label=".form-select-lg example" onChange={(e)=>chooseService(e.target.value)}>
+            <option selected>Elige el servicio</option>
+            <option value="salones">Salones</option>
+            <option value="comida">Comida</option>
+            <option value="musica">Música</option>
+            <option value="bartender">Bartender</option>
+          </select>
+        </div>
+        <div className='col '>
+          <select className='form-select form-select-lg mb-1' name="salon" onChange={(e)=>choosenFilters(e.target)}>
+            <option value="">Ambos salones</option>
+            <option value="golden">Golden</option>
+            <option value="platinum">Platinum</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+        {
+          service === "musica"
+          &&
+          <div className='col '>
+            <select className='form-select form-select-lg mb-1' name="grupo" onChange={(e)=>choosenFilters(e.target)}>
+              <option value="">Grupo musical</option>
+              <option value="Kalamarka">Kalamarka</option>
+              <option value="Jambao">Jambao</option>
+              <option value="Sabor Sabor">Sabor Sabor</option>
+            </select>
+          </div>
+        } 
+        {
+          service === "comida"
+          &&
+          <div className='col '>
+            <select className='form-select form-select-lg mb-1' name="plato" onChange={(e)=>choosenFilters(e.target)}>
+              <option value="">Plato de Comida</option>
+              <option value="Pique Macho">Pique Macho</option>
+              <option value="Lechon">Lechon</option>
+            </select>
+          </div>
+        }
+      </div>
+      <div className='mt-2  text-center'><button className='btn btn-success mx-auto' onClick={()=>searchReservas()}>Buscar Reservas</button></div>
     </div>
+
         <div className='row'>    
         {
             reservas?.map(reserva=>(
